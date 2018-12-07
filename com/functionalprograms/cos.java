@@ -60,7 +60,7 @@ public class cos {
 	System.out.println(""+cosX);
 	}
 	
-
+//method for calculating factorial 
 	public static double fact(int n) {
 		
 		double f=1;

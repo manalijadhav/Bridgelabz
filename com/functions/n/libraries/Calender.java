@@ -1,3 +1,15 @@
+/*********************************************************************************************************
+
+ *  Purpose: Accepts the day, month and year and gives the day of week on that date.
+ *  
+ *  @author  Manali Jadhav
+ *  
+ *  @version 1.0
+ *  
+ *  @since   20-11-2018
+ *  
+**********************************************************************************************************/
+
 package com.functions.n.libraries;
 import java.util.*;
 

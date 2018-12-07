@@ -22,12 +22,15 @@ public class StringFunctions {
           
           case 1:
         	  	System.out.println("Enter first string:");
-        	  	
-        	  	String string1 = scanner.next();
+        		Scanner scanner2 = new Scanner(System.in);
+
+        	  	String string1 = scanner2.nextLine();
         	  	
         	  	System.out.println("Enter second string:");
-        	  	
-        	  	String string2 = scanner.next();
+        	  	Scanner scanner3 = new Scanner(System.in);
+
+        	  	String string2 = scanner3.nextLine();
+        	  	//String string2 = scanner.next();
         
         	  	boolean flag = isAnagram(string1 , string2);
         	  	
@@ -70,7 +73,9 @@ public class StringFunctions {
           		
           		String str = scanner.next();
           		
-          		boolean count = permute(str);
+          		int len = str.length();
+          		
+          		permute(str , 0 , len-1);
           		
 	}
 	}
@@ -170,18 +175,28 @@ public class StringFunctions {
 		          
 		          }
 		
-		public static boolean permute(String string) {
-			
-			boolean count = false;
-			
-			int length = string.length();
-			
-			
-			
-			
-			return count;
-			
-		}
+		public static void permute(String str, int s, int e) {
+	        if(s == e) {
+	            System.out.println(str);
+	        }else {
+	            for(int i = s; i <= e; i++) {
+	               
+	                str = swap(str, s, i);
+	                permute(str, s+1, e);
+	                str = swap(str, s, i);
+	            }
+	               
+	        }
+	    }
+		public static String swap(String a, int i,int j) {
+	        char temp;
+	        char [] array = a.toCharArray();
+	        temp = array[i];
+	        array[i] = array[j];
+	        array[j] = temp;
+	        return String.valueOf(array);
+	       
+	    }
 		
 			
 		}

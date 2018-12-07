@@ -34,9 +34,12 @@ import java.util.Random;
 				}
 			
 			else{
-		
+				
+				//strores random values generated
+				
 		  		for(int i = 0 ; i < flips ; i++) {
 		  		
+		  			//The method returns a value greater than or equal to 0.0 and less than 1.0.
 		  			a[i] = Math.random();
 		       
 		  			}
@@ -46,6 +49,7 @@ import java.util.Random;
 		       
 		   			}*/
 		  		
+		  		//if value is less than 0.5 then tails 
 				for(int i = 0; i < flips ; i++){
 		   
 					if(a[i] < 0.5) {
@@ -54,7 +58,7 @@ import java.util.Random;
 						
 						tails++;
 								}
-					
+					//else heads
 					else{
 		   
 						System.out.println("heads");

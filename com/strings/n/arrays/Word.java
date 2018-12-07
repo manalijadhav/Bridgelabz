@@ -1,128 +1,112 @@
-package com.strings.n.arrays;
+ package com.strings.n.arrays;
+ 
+import java.io.*;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class Word {
 	
-	
-	public static void main(String[] args)throws IOException {
-	
-		File f = new File("/home/admin1/Downloads/project-master/src/com/strings/n/arrays/word");
-		
-		BufferedReader br = new BufferedReader(new FileReader(f));
-		
-		ArrayList<String> l = new ArrayList<>();
-		
-		//new string
-		String s = br.readLine();
-		
-        while (s!= null)
-        	{
-		        l.add(s);
-		        s = br.readLine();
-		        
-		     }
+	public static void binaryWord(String[] arr , String x) {
+         
+		//Initialize the first, last, and mid value
+    
+		int start = 0;
         
-        String[] words;
+		int end = arr.length - 1;
         
-        Scanner sc=new Scanner(System.in); 
+		int mid = (start + end) / 2;
+		
+         while(start <= end) {
+        	 
+             //Compare the mid to string x is less than 0 then print first value
+        	 
+             if(arr[mid].compareTo(x) < 0) {
+             
+            	 start = mid + 1 ;
+             }
+             else if(arr[mid].compareTo(x) == 0) {
+             
+            	 System.out.println("Word found in the word list : " + mid);
+                 
+            	 break;
+             }
+             else {
+             
+            	 end = mid - 1;
+             }
+             
+             mid = (start + end) / 2;
+         
+         } 
+         if(start > end) {
+           
+        	 System.out.println("Word is not found");
+         }
+    }
 
-        words = l.toArray(new String[l.size()]);
-        
-        System.out.println(Arrays.toString(words));
-        
-        System.out.println("\nSorted Words:\n");
-  
-        for(int i=0; i<words.length; i++)
-        {
-            for(int j=1; j<words.length; j++)
-            {
-                if(words[j-1].compareTo(words[j])>0)
-                {
-                    String temp = words[j-1];
-                    words[j-1] = words[j];
-                    words [j] = temp;
-                }
-            }
-        }
-        for(int i=0;i<words.length;i++)
-        {
-            System.out.println(words[i]);
-        }
-        System.out.println("Enter target string");
+	
+
+	public static BufferedReader br;
+
+    public static void main(String[] args) throws IOException {
+    
+    	Scanner scanner = new Scanner(System.in);
     	
-        String tar = sc.nextLine();
-		
-
-		int index = bsearch(words,tar);				
-	
-		if(index == -1)
-		{
-			System.out.println("Element is not present in the given array.");
-		}
-		else
-		{
-			 System.out.println("element present at "+(index+1));
-		}
-	}
+    	String file = "/home/admin1/Downloads/project-master/src/com/strings/n/arrays/word" ;
         
+    	File fileName = new File(file);
         
+    	br = new BufferedReader(new FileReader(fileName));
         
+    	String line;
         
-        
-        
-        //  Arrays.sort(words , 0 , words.length);
-        
-
-//        for(int i=0; i<words.length; i++) {
-//        	
-//        	for(int j = i+1; j<words.length; j++) {
-//        		
-//        		if(words[i].compareToIgnoreCase(words[j])>0){
-//    				
-//    				String temp = words[i];
-//    				
-//    				words[i]=words[j];
-//    				
-//    				words[j]=temp;
-//    		}
-//        	}
-//        }
-        
-        
-        
-	
-	public static int bsearch(String words[], String tar)
-	{
-		int max = (words.length-1);
-		
-		int min = 0;
-
-		while (max >= min) {
-			
-			int mid = (min+max) / 2;
-			
-			int comp = tar.compareTo(words[mid]);
-	  
-			if (comp == 0)
-            {
-              return mid;
-            }
-            else if (comp < 0)
-            {
-              max = mid - 1;
-            }
-            else
-            {
-              min = mid + 1;
-            }
-          }
-          return -1;
+    	String arr[] = {};
+       
+        //System.out.println( n);
+       
+        while((line = br.readLine()) != null){
+             //process the line
+//            for(int i = 0; i <= n; i++)
+//            {
+//                arr = line.split("\\s+");
+//               
+//            }
+           
+            //System.out.println(line);
+            arr = line.split("\\s+");
+              
         }
-	
-	
+        
+//        System.out.println("Array elements: ");
+//        
+//        for(int i = 0; i < arr.length; i++)
+//        {
+//           
+//            System.out.println(arr[i]);
+//        }
+          Arrays.sort(arr, 0 , arr.length);
+   
+          System.out.println("Sorted array: ");
+          
+          for(int i = 0; i < arr.length; i++)
+         {
+       
+             System.out.println(arr[i]);
+         }       
+            
+         System.out.println("Enter the word you want to search from word list");
+         
+         String x = scanner.next();
+         
+//         System.out.println("Intput searched string: "+x);
+  
+         binaryWord(arr, x);
+       
+       
+    }
+   
+   
+
 }
+

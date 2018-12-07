@@ -4,7 +4,7 @@ import java.util.*;
 
 public class MagicNumber {
 
-	static Scanner sc = new Scanner(System.in);
+	static Scanner scanner = new Scanner(System.in);
 	
 	public static void main(String args[]) {
 		
@@ -14,7 +14,12 @@ public class MagicNumber {
 		
 		System.out.println("enter N ");
 		
-		int N = sc.nextInt();
+		int N = scanner.nextInt();
+		
+		int num = (int) Math.pow(2, N);
+		
+		System.out.println("Think of a Number between 0 to " +(num-1));
+		
 		question(N);
 		
 	}
@@ -34,15 +39,15 @@ public class MagicNumber {
 		
 		while(input!=2)
 		{
-			System.out.println("Is your number "+ guess +"...??\n");
+			System.out.println("\nIs your number "+ guess +"...??\n");
 			
-			System.out.println("1.No, my number is lower\n");
+			System.out.println("1.Is your number between " +min+ " and" +(guess-1)+ "\n");
 			
 			System.out.println("2.yes, this is my number\n");
 			
-			System.out.println("3.No, my number is higher\n");
+			System.out.println("3.Is your number between " +(guess+1)+ " and " +max+ "\n");
 			
-			input = sc.nextInt();
+			input = scanner.nextInt();
 			
 			if(input == 1)
 			{

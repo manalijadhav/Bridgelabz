@@ -16,6 +16,7 @@ import java.util.*;
 import java.util.Random;
 
 public class Gammbler{
+	
 	public static void Gammbler(int stake, int goal, int trials){
 		
 		int loss=0;
@@ -25,19 +26,18 @@ public class Gammbler{
 		int wins=0;
 		
 		
-		
-
-			for (int t = 0; t < trials; t++) {
-			
+			for (int t = 0 ; t < trials ; t++) {		
+				
 				int cash = stake;
 				
 				while (cash > 0 && cash < goal) {
+					
 					bets++;
+		
 					if (Math.random() < 0.5)
 					{
 						cash++;
-						
-						
+							
 					}
 					else {      
 						

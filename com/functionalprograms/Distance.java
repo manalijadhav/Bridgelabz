@@ -21,6 +21,8 @@ public class Distance {
 	
 		Utility Utility = new Utility();
 		
+		//Accept values of x and y axis
+		
 		System.out.println("You entered value of X-axis");
 		
 		int x=Integer.parseInt(args[0]);

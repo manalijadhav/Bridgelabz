@@ -27,6 +27,7 @@ public class CarLoan {
 		int Y = sc.nextInt();
 		int R = sc.nextInt();*/
 		
+		
 		// Enter the values of Principal amount , Number of years and Rate of interest
 		
 		float Principal = Float.parseFloat(args[0]);

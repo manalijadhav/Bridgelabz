@@ -15,6 +15,8 @@ package com.functionalprograms;
 import utility.Utility;
 
 public class DayOfWeek {
+	
+	//Formulas
 	public static void DayOfWeek(int d , int m , int y) {
 		   
 		int y0 = y - (14 - m) / 12;

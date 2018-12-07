@@ -19,18 +19,19 @@ public class DecimaltoBinary{
 	
 public static void DecimaltoBinary(int n){
 		
-		
+		//accepts array to store binary equivalent
         int [] binaryNum = new int [1000]; 
         
         int count = 0; 
         
         while (n > 0)  {
         
-             
+            //stores the remainder in array
             binaryNum [ count ] = n % 2; 
             
+            //number divided by 2 and quotient is stored
             n = n / 2; 
-            
+                        
             count++; 
         	} 
     
@@ -38,19 +39,26 @@ public static void DecimaltoBinary(int n){
     String str = null;
     String NumberAsString = null;
          
+    //reverse the array to print the bianry from MSB to LSB
+    
         for (int j = count - 1 ; j >= 0 ; j--) {
                
-        	
+          
+
             result = binaryNum[j];
             
          System.out.print(result);
          
         
      // System.out.println(" ");
-         str = Integer.toString(result);
         
-        NumberAsString = Utility.ToString(str, 8);
+        // System.out.print("str: "+str);
+        
         }
+        str = Integer.toString(result);
+        System.out.println("str"+str);
+        NumberAsString = Utility.ToString(str, 8);
+
         System.out.print("\nBinary Equivalent :" + NumberAsString );
         
        }
@@ -61,7 +69,7 @@ public static void DecimaltoBinary(int n){
 	
 		Scanner scanner = new Scanner(System.in);
 		
-		Utility Utility = new Utility();
+		//Utility Utility = new Utility();
 		
 		System.out.println("Enter a decimal number to get its binary conversion :");
 		

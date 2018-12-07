@@ -7,15 +7,17 @@ class MergeSort
    
     public static void main(String args[])
     {  
-        Scanner sc=new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        
         System.out.println("Enter number of strings");
-        int n1=sc.nextInt();
+        
+        int n1 = scanner.nextInt();
         String arr[]=new String[n1];
        
         System.out.print("Enter Names/Words : ");
         for(int i=0; i<arr.length; i++)
         {
-            arr[i] = sc.next();
+            arr[i] = scanner.next();
         }
        
         System.out.println("Given Array");
