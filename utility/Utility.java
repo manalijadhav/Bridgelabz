@@ -236,12 +236,61 @@ public class Utility {
 	 }
 	 
 	 
+//********************************************BUBBLE SORT************************************************ 
 	 
 	 
-	 
-	 
-	 
-	 
+	 public static int bubblesort(int arr[], int l) {
+		
+			int flag = 0;
+			
+			for(int i=0;i<l;i++)
+			{
+				for(int j=0; j<l-i-1;j++)
+				{
+					
+					if(arr[j]>arr[j+1])
+					{
+						int temp = arr[j];
+						
+						arr[j] = arr[j+1];
+						
+						arr[j+1] = temp;
+						
+						flag++;
+					}
+				}
+				if(flag == 0)
+					
+					break;
+			}
+			System.out.println("Sorted array:") ;
+			
+			for( int i = 0 ; i < l ; i++ )
+				
+			System.out.println(arr[i]);
+			
+			return flag;
+		}
+//*****************************************PRIME NUMBERS*******************************************************
 	
-	
+	 public static boolean isPrime(int n) {
+	      
+	    	//1 is neither prime nor composite
+	    	if (n <= 1) {
+	        
+	    		return false;
+	        }
+	        
+	    	//set upper limit to sqrt of n 
+	    	//n has no other factors greater than its sqrt except itself
+	    	for (int i = 2; i <= Math.sqrt(n); i++) {
+	        
+	    		//if remainder is 0 then factors are present
+	    		if (n % i == 0) {
+	            
+	    			return false;
+	            }
+	        }
+	        return true;
+	    }
 }
