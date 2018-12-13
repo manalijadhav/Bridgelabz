@@ -11,16 +11,14 @@
 **********************************************************************************************************/
 
 package com.functions.n.libraries;
+
 import java.util.*;
 
-import utility.Utility;
 public class Calender {
 
 			public static String Day(int d,int m,int y) {
 				
-				Utility Utility = new Utility();
-				
-			    int dcal=Utility.date(d,m,y);
+			    int dcal=utility.Utility.date(d,m,y);
 			    
 			    String days[]= {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
 			    

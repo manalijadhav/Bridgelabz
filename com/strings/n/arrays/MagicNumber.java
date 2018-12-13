@@ -12,7 +12,7 @@ public class MagicNumber {
 		
 		//int N = Integer.parseInt(args[0]);
 		
-		System.out.println("enter N ");
+		System.out.println(" Enter value of N (2^ N)= ");
 		
 		int N = scanner.nextInt();
 		
@@ -27,48 +27,55 @@ public class MagicNumber {
 	{
 		int n = (int) Math.pow(2, N);
 		
-		int tries = 0;
+		int tries = 1;
 		
-		int input = 0;
+		String input = " " ;
 		
 		int min = 0;
 		
 		int max = n;
 		
-		int guess = (min+max)/2;
+		int guess = ( min + max ) / 2;
 		
-		while(input!=2)
-		{
-			System.out.println("\nIs your number "+ guess +"...??\n");
+		if(max >= min) {
 			
-			System.out.println("1.Is your number between " +min+ " and" +(guess-1)+ "\n");
+			while(!input.equalsIgnoreCase("yes")) {
+		
+			System.out.println("\nIs your number "+ guess +"...??Enter Yes/No ");
 			
-			System.out.println("2.yes, this is my number\n");
+			input = scanner.next();
 			
-			System.out.println("3.Is your number between " +(guess+1)+ " and " +max+ "\n");
+			if(input.equalsIgnoreCase("no")) {
+				
+			System.out.println("Number higher than " +guess+ "(enter high)\n");
 			
-			input = scanner.nextInt();
+			System.out.println("Number lower than " +guess+ "(enter low)\n");
 			
-			if(input == 1)
+			input = scanner.next();
+			
+			if(input.equalsIgnoreCase("high"))
 			{
-				max = guess;
+				min=guess;
 				
-				guess = min + (guess-min)/2;
-				
-				tries++;
+    		    guess=(max+min)/2;
+    		    
+    		    tries++;
 			}
-			else if(input == 3)
+			else if(input.equalsIgnoreCase("low"))
 			{
-				min = guess;
+				max=guess;
 				
-				guess = guess + (max - guess)/2;
-				
-				tries++;
+    			guess=(max+min)/2;
+    			
+    			tries++;
 			}
 		}
-		
+			}
+		}
 		System.out.println("It took "+ tries + " tries to guess "+ guess);
 	}
 		
 	
 }
+	
+

@@ -1,6 +1,8 @@
 package utility;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Utility {
 
@@ -126,6 +128,7 @@ public class Utility {
 	     }
 	 }
 	return freq_num;
+	
 	 }
 
 //**********************************************HARMONIC NUMBER********************************************************	
@@ -293,4 +296,130 @@ public class Utility {
 	        }
 	        return true;
 	    }
+
+
+
+//***************************REGISTRATION FORM**********************************
+
+public static boolean ValidatenameStrings( String fname ){
+	
+	boolean flag1 = false;
+	
+	//allow only Alphabets and space
+	Pattern pattern = Pattern.compile("[a-zA-Z][a-zA-Z ]*");
+    Matcher match = pattern.matcher(fname);
+    if(match.find() && match.group().equals(fname)) {
+        
+        flag1 = true;
+        
+    }
+    else { 
+    
+        System.out.println("Invalid information");
+    }
+	
+	return flag1;
+}
+
+public static boolean ValidateEmailStrings( String email ){
+	
+	boolean flag1 = false;
+	
+	
+	Pattern pattern = Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$");
+    Matcher match = pattern.matcher(email);
+    if(match.find() && match.group().equals(email)) {
+        
+        flag1 = true;
+        
+    }
+    else { 
+    
+        System.out.println("Invalid information");
+    }
+	
+	return flag1;
+}
+
+public static boolean ValidateContactStrings( String ph ){
+	
+	boolean flag1 = false;
+	
+	//allow only Alphabets and space
+	Pattern pattern = Pattern.compile("(0/91)?[7-9][0-9]{9}");
+	
+    Matcher match = pattern.matcher(ph);
+    
+    if(match.find() && match.group().equals(ph)) {
+        
+    	flag1 = true;       
+    }
+    else { 
+    
+        System.out.println("Invalid information");
+    }
+	
+	return flag1;
+}
+
+public static boolean ValidateUserIDStrings( String uid ){
+	
+	boolean flag1 = false;
+	
+
+	Pattern pattern = Pattern.compile("[a-z0-9]+");
+    Matcher match = pattern.matcher(uid);
+    if(match.find() && match.group().equals(uid)) {
+        
+    	flag1 = true;
+        
+    }
+    else { 
+    
+        System.out.println("Invalid information");
+    }
+	
+	return flag1;
+}
+
+public static boolean ValidateCompanyStrings( String cname ){
+	
+	boolean flag1 = false;	
+	Pattern pattern = Pattern.compile("[a-zA-Z][a-zA-Z ]*");
+    Matcher match = pattern.matcher(cname);
+    if(match.find() && match.group().equals(cname)) {
+        
+    	flag1 = true;
+        
+    }
+    else { 
+    
+        System.out.println("Invalid information");
+    }
+	
+	return flag1;
+}
+
+public static boolean ValidatePasswordStrings( String pw ){
+	
+	boolean flag1 = false;
+	
+	
+	Pattern pattern = Pattern.compile("((?=.*\\d)(?=.*[A-Z])(?=.*[!^&*@#$%]).{8,20})+"); 
+	
+    Matcher match = pattern.matcher(pw);
+    
+    if(match.find() && match.group().equals(pw)) {
+        
+        flag1 = true;
+        
+    }
+    else { 
+ 
+    	flag1 = false;
+     //   System.out.println("Invalid information");
+    }
+	
+	return flag1;
+}
 }
