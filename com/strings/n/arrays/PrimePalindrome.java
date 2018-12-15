@@ -10,6 +10,8 @@ public class PrimePalindrome {
 	
 	//int n = 100; 
 	
+	int [] PPalindrome = new int[] {};
+	
 	while(count <= 20) {
 		
 		if(isPalindrome(numb) && Utility.isPrime(numb)) {
@@ -30,11 +32,13 @@ public class PrimePalindrome {
 		public static int palind(int n) {
 		
 			int reverseNum = 0;
-	        while(n != 0) {
+	     
+			while(n != 0) {
 	           
 	           int digit = n % 10;
+	           
 	            reverseNum = reverseNum * 10 + digit;
-	            n = n/ 10;
+	            n = n / 10;
 	        }
 	        return reverseNum;
 	    }

@@ -23,9 +23,9 @@ public class SumOfTriplets {
 		int count = 0 ;
 		for(int i=0; i<len-2; i++) {
 			
-			for(int j=0; j<len-1; j++) {
+			for(int j=i+1; j<len-1; j++) {
 				
-				for(int k=0; k<len; k++) {
+				for(int k=i+2; k<len; k++) {
 					
 					if((elements[i] + elements[j] + elements[k]) == 0 ) {
 						
