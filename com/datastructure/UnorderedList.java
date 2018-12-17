@@ -12,7 +12,7 @@ public class UnorderedList {
 		
 		Scanner scanner = new Scanner(System.in);
 		
-		List<String> list = new LinkedList<String>();
+		List<String> list = (List<String>) new LinkedList();
 		
 		String file = "/home/admin1/Downloads/project-master/src/com/datastructure/ds";
 		

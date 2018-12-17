@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class random2 {
-  //  static ArrayList<Integer> list = new ArrayList<Integer>();
+  
     static ArrayList<Integer> tempList = new ArrayList<Integer>();
     static int count = 0;
     static int size = 6;
@@ -36,7 +36,9 @@ public class random2 {
                    if (tempList.get(j) > tempList.get(j + 1)) 
                    {
                       int temp = tempList.get(j);
+                      
                       tempList.set(j, tempList.get(j + 1));
+                      
                       tempList.set(j + 1, temp);
                    }
                }

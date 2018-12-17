@@ -1,51 +1,50 @@
 package com.strings.n.arrays;
 
-import java.util.*;
-
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Random;
+ 
 public class BirthDate {
+ 
+   static Random r = new Random();
+   
+   static int []  birthdayset = new int[50];
+   
+   static int counter = 0;  
+   
+   static int number;
+  
+   		public static void main(String[] args) {
+  
+    			 
+    		for(int i = 0 ; i < birthdayset.length; i++) {
+    			
+    			number = r .nextInt(12)+1; 
+    			
+    			birthdayset[i] = number;
+    			
+    			System.out.println(birthdayset[i]);
+    		}
+    		
+    		for(int i=0; i<birthdayset.length-1; i++) {
+    			
+    			for(int j=i+1 ; j<birthdayset.length; j++) {
+    				
+    				if((birthdayset[i] == birthdayset[j]) && (i != j)) {
+    					
+    					counter++;
+    				}
+    			}
+    		
+    		}
+    
+    System.out.println(counter + " people has birthdates same");
+    
 
-	public static void main(String[] args) {
-		
-	//	Scanner scanner = new Scanner(System.in);
-		
-			int days   = 366 ;
-		 
-	        int trials = 50;
-	        
-	        int people = 0;                          
+    	
 
-	       
-	        for (int i = 0; i < trials; i++) {
-
-	            //  hasBirthday[d] = true if someone born on day d; false otherwise
-	            boolean[] hasBirthday = new boolean[days];
-
-	            while (true) {
-	              
-	            	people++;                               // one person enters the room
-	                int m = (int) ((Math.random()*12)+1);
-	                System.out.println("Month"+m);
-	            	int d = (int) (Math.random() * days);   // integer between 0 and days-1
-	                System.out.println("Date"+d);
-	            	if (hasBirthday[d]) 
-	            		
-	            		break;             
-	                
-	            	hasBirthday[d] = true;           
-	            }
-//	            System.out.println("count: ");
-//	    		
-//	            for (int j = 0; j < trials; j++) {
-//	    		
-//	    			if(hasBirthday[j] == true) {
-//	    				
-//	    				System.out.println(i + "");
-//	    			}
-//	    			
-//	        }
-
-	            System.out.println(people);
-	}
-
-	}
+    	
+    
+    
+   		}
 }

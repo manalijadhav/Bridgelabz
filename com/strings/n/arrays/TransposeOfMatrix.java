@@ -39,8 +39,10 @@ public class TransposeOfMatrix {
 			
 			for(int j = 0; j < 3; j++) {
 				
+				
 				System.out.print(matrix[j][i]+ " ");
 			}
+			
 			System.out.println();
 		}
 		
