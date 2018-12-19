@@ -8,6 +8,8 @@ public class LinkedList<T> {
 	private Node next;
 	
 	private int count =0;
+	
+	private T count1;
 //*************************INSERT ELEMENT AT END******************************
 	
 	public void insertAtend(T data) {
@@ -239,9 +241,32 @@ public class LinkedList<T> {
 		System.out.println();
 	}
 		
+//*******************************************POP***********************************************************	
 		
+	public T pop(int index)
+    {
+        if(index==0)
+        {
+        	head = head.next;
+           // T firstData=head.data;
+            count--;
+            //return firstData;
+        }else {
+        	Node<T> temp=head;
+        for(int i=0; i<index-1; i++)
+        {
+            temp=temp.next;
+        }
+        T dataOfIndex=temp.next.data;
+        temp.next=temp.next.next;
+        count--;
+        return dataOfIndex;
+
+        }
+		return count1;
 		
-		
+    }
+    
 	
 
 }

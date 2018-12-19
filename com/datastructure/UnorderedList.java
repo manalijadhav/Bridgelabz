@@ -7,7 +7,7 @@ import java.util.*;
 
 public class UnorderedList {
 
-public static void main(String[] args) throws IOException{
+	public static void main(String[] args) throws IOException{
 	
 	Scanner scanner = new Scanner(System.in);
 	
@@ -18,7 +18,7 @@ public static void main(String[] args) throws IOException{
 	unorderedList(word1);
 	}
 
-public static void unorderedList(String word) throws IOException {
+	public static void unorderedList(String word) throws IOException {
 	
 	String str=" ";
 	
@@ -33,11 +33,12 @@ public static void unorderedList(String word) throws IOException {
         str = reader.nextLine();
         
     }
+    LinkedList<String> list = new LinkedList<String>();
+    
     String s = str;
     
     String[] arrOfStr = s.split(" ", str.length()); 
     
-    LinkedList<String> list = new LinkedList<String>();
     
     for(int i = 0 ; i < arrOfStr.length ; i++) {
        
