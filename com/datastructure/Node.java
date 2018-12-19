@@ -2,19 +2,20 @@ package com.datastructure;
 
 public class Node <T> {
 
-	T data;
+	public T data;
 	//T element;
-	Node<T> next;
+	 Node <T> next;
 	
-	Node(T data){
+	public Node(T data){
 		
 		this.data = data;
+		this.next = null;
 	}
 	
-	Node(T data , Node<T> next){
-	
-		this.data = data;
-		
-		this.next = next;
-	}
+//	public Node(T data , Node<T> next){
+//	
+//		this.data = data;
+//		
+//		this.next = next;
+//	}
 }

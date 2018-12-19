@@ -1,6 +1,5 @@
 package com.datastructure;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -8,38 +7,67 @@ import java.util.*;
 
 public class UnorderedList {
 
-	public static void main(String[] args)throws IOException{
-		
-		Scanner scanner = new Scanner(System.in);
-		
-		List<String> list = (List<String>) new LinkedList();
-		
-		String file = "/home/admin1/Downloads/project-master/src/com/datastructure/ds";
-		
-		File filename = new File(file);
-		
-		BufferedReader br = new BufferedReader(new FileReader(filename));
-		
-		String line = "" ;
-		
-		String read = "" ;
-		
-		String wordArray[] = {};
-		
-		while((line = br.readLine()) != null){
-			
-			read += line ;
-			 // wordArray = line.split("\\s+");
-		}
-		
-		wordArray = read.split(" ");
-		
-		for(int i = 0; i < wordArray.length; i++) {	           
-
-			list.add(wordArray[i]);
-		}
-		
-			System.out.println(list);
+public static void main(String[] args) throws IOException{
+	
+	Scanner scanner = new Scanner(System.in);
+	
+	System.out.println("Enter string to search");
+	
+	String word1 = scanner.next();
+	
+	unorderedList(word1);
 	}
+
+public static void unorderedList(String word) throws IOException {
+	
+	String str=" ";
+	
+	String file = "/home/admin1/Downloads/project-master/src/com/datastructure/ds";
+	
+	File fileName = new File(file);
+	
+	Scanner reader = new Scanner(new FileReader(fileName));
+    
+    while (reader.hasNext()){
+    	
+        str = reader.nextLine();
+        
+    }
+    String s = str;
+    
+    String[] arrOfStr = s.split(" ", str.length()); 
+    
+    LinkedList<String> list = new LinkedList<String>();
+    
+    for(int i = 0 ; i < arrOfStr.length ; i++) {
+       
+    	list.insertAtend(arrOfStr[i]);
+    	
+    }
+    list.show();
+    
+    if(list.find(word)){
+       
+    	String s1 = word;
+        
+    	System.out.println(" word is already in list so remove it");
+       
+    	 int remove = list.index(s1);
+    	 
+    	 list.deleteAt(remove);
+       
+        list.show();
+   
+           }
+        else
+        {
+            System.out.println("word is not in the list so add it");
+         
+            list.insertAtend(word);
+           
+            list.show();
+           
+        }
+}
 
 }
