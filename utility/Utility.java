@@ -1,5 +1,9 @@
 package utility;
 
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,7 +33,7 @@ public class Utility {
 				
 				flag = false;
 				}	
-			
+			 
 			else if(year % 4 == 0) {
 				
 				flag = true;
@@ -243,16 +247,16 @@ public class Utility {
 //********************************************BUBBLE SORT************************************************ 
 	 
 	 
-	 public static int bubblesort(int arr[], int l) {
+	 public static int[] bubblesort(int arr[], int l) {
 		
-			int flag = 0;
+			//int flag = 0;
 			
 			for(int i=0;i<l;i++)
 			{
 				for(int j=0; j<l-i-1;j++)
 				{
-					
-					if(arr[j]>arr[j+1])
+ 					
+					if(arr[j]>arr[j+1]) 
 					{
 						int temp = arr[j];
 						
@@ -260,21 +264,14 @@ public class Utility {
 						
 						arr[j+1] = temp;
 						
-						flag++;
+						
 					}
 				}
-				if(flag == 0)
-					
-					break;
-			}
-			System.out.println("Sorted array:") ;
-			
-			for( int i = 0 ; i < l ; i++ )
 				
-			System.out.println(arr[i]);
-			
-			return flag;
 		}
+			
+			return arr;
+	 }
 //*****************************************PRIME NUMBERS*******************************************************
 	
 	 public static boolean isPrime(int n) {
@@ -423,4 +420,31 @@ public static boolean ValidatePasswordStrings( String pw ){
 	
 	return flag1;
 }
+
+//***********************************************************************
+public static void writeAllToFile(String fileName, String content)
+
+{
+    try
+    {
+        FileWriter filewriter=new FileWriter(fileName);
+        BufferedWriter bufferedwriter=new BufferedWriter(filewriter);
+        bufferedwriter.write(content);
+        bufferedwriter.close(); 
+    }
+    catch(FileNotFoundException fileNotFoundException)
+    {
+        System.out.println("your file is not found in the location '"+fileName+"'");
+    }
+    catch(IOException ioException)
+    {
+        System.out.println("Error in reading your file '"+fileName+"'");
+    }
+}
+
+
+
+//****************************************************************************
+
+
 }

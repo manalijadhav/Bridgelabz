@@ -47,7 +47,7 @@ public class MainProgram {
 		
 		list.show();
 		
-		if(list.find(100)) 
+		if(list.search(100)) 
 			System.out.println("Given element is present in list");
 		
 		else 

@@ -111,9 +111,15 @@ public class LinkedList<T> {
 	}
 //************************************************DELETE ELEMENT AT GIVEN POSITION******************************************************************
 	public void deleteAt(int index) {
-		
+		int count = 0;
+	
+		if(index ==0) {
+			head = head.next;
+			return;
+			
+		}
 		Node<T> temp = head;
-		int count =0;
+		
 		
 		while(count < index-1) {
 			
@@ -130,7 +136,7 @@ public class LinkedList<T> {
 	
 //******************************************************TO FIND ELEMENT IN LIST***************************************************************
 	
-	public boolean find (T searchkey) {
+	public boolean search (T searchkey) {
 		
 		if(head == null) {
 			
@@ -160,6 +166,7 @@ public class LinkedList<T> {
 //*******************************************************************************************
 	
 	public int index(T data) {
+		
 		
 		Node<T> temp = head;
 		
@@ -227,6 +234,11 @@ public class LinkedList<T> {
 		return false;
 		
 	}
+	public int size() {
+		
+		return count;
+	}
+	
 //******************************************DISPLAY METHOD*********************************************
 	public void show() {
 		
@@ -253,13 +265,17 @@ public class LinkedList<T> {
             //return firstData;
         }else {
         	Node<T> temp=head;
+        	
         for(int i=0; i<index-1; i++)
         {
             temp=temp.next;
         }
         T dataOfIndex=temp.next.data;
+        
         temp.next=temp.next.next;
+        
         count--;
+        
         return dataOfIndex;
 
         }
@@ -267,6 +283,46 @@ public class LinkedList<T> {
 		
     }
     
+//******************************************SORTING OF LINKED LIST**************************************************
 	
+	public void sort(Node<T> newnode) {
+		
+		if( (head == null ) || (head.data.toString().compareTo(newnode.data.toString())>=0)) {
+			
+			newnode.next = head;
+			
+			head = newnode;
+			
+		}
+		else {
+	
+			Node<T> temp = head;
+		
+			while( (temp.next != null && temp.next.data.toString().compareTo(newnode.data.toString())<0)) {
+			
+				temp = temp.next;
+			
+				newnode.next = temp.next;
+			
+				temp.next = newnode;
+		}
+	}
+	}
+//*********************************************************************************************
+	public T getdata(int index){
+		
+		if(index == 0) {
+			return head.data;
+		}
+		else {
+			Node<T> temp = head;
+			for(int i=0; i<index-1;i++ ) {
+				temp = temp.next;
+				
+			}
+			return temp.data;
+		}
+	}
+
 
 }
