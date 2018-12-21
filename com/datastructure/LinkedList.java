@@ -285,27 +285,22 @@ public class LinkedList<T> {
     
 //******************************************SORTING OF LINKED LIST**************************************************
 	
-	public void sort(Node<T> newnode) {
-		
+	public void sort(T newData ) {
+		Node<T> newnode = new Node<T>(newData);
 		if( (head == null ) || (head.data.toString().compareTo(newnode.data.toString())>=0)) {
 			
-			newnode.next = head;
-			
-			head = newnode;
-			
+			newnode.next = head;			
+			head = newnode;			
 		}
 		else {
 	
 			Node<T> temp = head;
 		
-			while( (temp.next != null && temp.next.data.toString().compareTo(newnode.data.toString())<0)) {
-			
+			while( (temp.next != null && temp.next.data.toString().compareTo(newnode.data.toString())<0)) {			
 				temp = temp.next;
-			
-				newnode.next = temp.next;
-			
-				temp.next = newnode;
-		}
+			}			
+			newnode.next = temp.next;		
+			temp.next = newnode;	
 	}
 	}
 //*********************************************************************************************

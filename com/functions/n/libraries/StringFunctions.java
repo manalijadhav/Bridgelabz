@@ -14,7 +14,7 @@ public class StringFunctions {
         
         System.out.println("2.To check if the given String is a Palindrome or not.");
         
-        System.out.println("3.To check Permutation of String by iterative method");
+        System.out.println("3.To check Permutation of String by recursive method");
         
           int choice = scanner.nextInt();
           
@@ -183,7 +183,7 @@ public class StringFunctions {
 	               
 	                str = swap(str, s, i);
 	                permute(str, s+1, e);
-	                str = swap(str, s, i);
+	              //  str = swap(str, s, i);
 	            }
 	               
 	        }

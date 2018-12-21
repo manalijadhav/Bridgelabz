@@ -20,6 +20,7 @@ public class MatrixMultiplication {
 			System.out.println("Number of rows and cols of Matrix1: ");
 			
 			int row1 = scanner.nextInt();
+			
 			int col1 = scanner.nextInt();
 			
 			int [][] first = new int[row1][col1];
@@ -66,7 +67,7 @@ public class MatrixMultiplication {
 					
 					for(int j = 0 ; j < col2 ; j++) {
 						
-						for(int k=0; k < row2 ; k++) {
+						for(int k = 0; k < row2 ; k++) {
 							
 							sum = sum + first[i][k] * second [k][j];
 						}

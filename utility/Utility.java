@@ -445,6 +445,82 @@ public static void writeAllToFile(String fileName, String content)
 
 
 //****************************************************************************
+public static int[] primeAnagram(int n) {
+    
+    boolean flag = false;
+    
+    int  k = 0 , i;
+    
+    int intArray[] = new int[n];
+    
+    for(i = 0 ;i <= n;i++) {  
+    
+        for(int j = 2; j < i ;j++) {   
+        
+            if(i%j==0) {       
+            
+                flag = false;
+                break;
+            }
+            else
+                flag = true;
+        }
+  
+        if(flag) {       
+            
+                System.out.print(i+" ");                        
+                intArray[k] = i;         
+                k++;                       
+            
+        }
+    }
+   // System.out.println("Anagrams are :");
+    checkAnagram(intArray, k);
+	return intArray;           
 
+}
+	
+	public static int[] checkAnagram(int intArray[], int k){
+    
+        String strArray,str1;
+       
+        int anagram;
+        String br[] = new String[k];
+      
+        boolean flag = false;
+       
+        for (int i = 0; i < k; i++) {
+        
+            // Convert integer to string
+            strArray = Integer.toString(intArray[i]);
+            //Convert String array to character array
+            char z[] = strArray.toCharArray();
+            Arrays.sort(z);
+            //Convert string into integer
+            str1 = String.valueOf(z);
+            br[i] = str1;
+        }
+        System.out.println();
+        for(int m=0;m<=k;m++)
+        {
+            for(int p=m+1;p<k;p++)
+            {
+                    if(br[m].equals(br[p]))
+                    {
+                    	 
+                    	
+                        //Print anagram numbers
+                        System.out.print(intArray[m]+ " -- " +intArray[p]+" -- ");
+                        flag=true;
+                    }
+            }
+        }
+        if(flag == false)
+        {
+            System.out.println("Exit");
+        }    
+return intArray;
+    }
+	
 
 }

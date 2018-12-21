@@ -36,7 +36,8 @@ public class Stack<T> {
 		
 		length++;
 		
-	}
+		}
+	//}
 	
 //***************************************************************************
 	
@@ -71,4 +72,23 @@ public class Stack<T> {
 	}
 	
 //*****************************************************************************
+	
+	
+	public void show() {
+		
+		if(isEmpty()) {
+			
+			return;
+			
+			}
+			else {
+				Node<T> node = top;
+				while(node.next!=null)
+				{
+					System.out.print(node.data+ " --> ");
+					node = node.next;
+				}
+		System.out.println(node.data);
+	}
+	}
 }

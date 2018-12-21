@@ -25,40 +25,37 @@ public class OrderedList <T>{
 		    
 		    while (reader.hasNext()){
 		    	
-		        str = reader.nextLine();
-		        
+		        str = reader.nextLine();		        
 		    }
 		    
 		    String s = str;
 	         
 	        String[] arrOfStr = s.split(" ", str.length());
+	        /*for(int i=0;i<arrOfStr.length;i++)
+	        	System.out.print(arrOfStr[i]+" ");*/
 	        
 	       int[] array = new int[arrOfStr.length];
 
-	        for(int i  = 0 ; i < arrOfStr.length ; i++) {
-	            
-	        	array[i]= Integer.parseInt(arrOfStr[i]);
-	        
-	        	
+        for(int i  = 0 ; i < arrOfStr.length ; i++) {
+           
+        	array[i]= Integer.parseInt(arrOfStr[i]);
 	        }
-	       Utility.bubblesort(array, array.length);
-	       
+//	      // Utility.bubblesort(array, array.length);
+//	       
 	       for(int i=0; i<array.length; i++) {
 	    	  
-	    	   list.insertAtend(array[i]);
-	    	   
+	    	   list.sort(array[i]);	    	   
 	       }
 	       list.show();
 	       System.out.println("Enter number to search");
 			
-			int num = scanner.nextInt();
-			
+			int num = scanner.nextInt();			
 			orderedList(num);
-			
+//			
 			}
-		
-	
-		
+//		
+//	
+//		
 		public static <T> void orderedList(int number) throws IOException {
 				
 			

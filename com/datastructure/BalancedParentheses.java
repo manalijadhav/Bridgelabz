@@ -43,7 +43,7 @@ public class BalancedParentheses {
 
 				if ((string.charAt(i) == ']' || string.charAt(i) == '}' || string.charAt(i) == ')')) {
 
-					System.out.println( "Expression is not Balanced \\n False");
+					System.out.println( "Expression is not Balanced \n False");
 
 				}
 
@@ -53,11 +53,11 @@ public class BalancedParentheses {
 
 		if (stack.isEmpty())
 
-			System.out.println( "Expression is Balanced \\n True");
+			System.out.println( "Expression is Balanced \n True");
 
 		else
 
-			System.out.println( "Expression is not Balanced \\\\n False" );
+			System.out.println( "Expression is not Balanced \n False" );
 
 	}
 }
