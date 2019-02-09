@@ -1,0 +1,298 @@
+
+
+	
+				Who ?
+				|
+		-------------------------------------
+		|				|
+		where				when
+		|space				|   time = TSL Feb 2019
+		|				|
+	-------------------------------------------------------
+	|			|			|
+	why			what			how
+	reason			in=>FORMation		implementation
+							|
+					---------------------------------
+						|		|
+						success	<------	feedback
+
+
+		raw data --> processing --> Information
+
+to do list
+------------
+1
+2
+3
+4
+5
+
+ space  time situation
+
+4th Gen Time Table
+---------------------
+	7 habits
+
+-----------------------------------------------------------------------
+	|	urgent			|	not urgent
+-----------------------------------------------------------------------
+	|				|	 study after 18.00 
+imp	|				|   
+	|				|
+-----------------------------------------------------------------------
+	|				| insta fb		
+not imp	|				| 
+	|				| mobile whatsapp	
+-----------------------------------------------------------------------
+
+
+
+
+
+
+	listen	-->	speak	-->	read	->	write
+	2-ears		1-mouth		2 eyes		2 hands  karma basundi
+	|		|		|		|
+	-----------------		-----------------
+		|				|
+		concept			implementation
+
+	SQL
+
+	"Structured" Query language
+
+	PL/SQL
+
+	Procedural Language / Structured Query language  
+
+
+
+	SQL
+	
+		DDL
+			create, alter, truncate, drop, rename
+			commit is implicit
+	
+		DQL
+			select 
+
+		DML
+			insert into emp values (10,'jack');
+			insert into emp values (12,'jane');
+			insert into emp values (13,'jill');
+
+			update  dept
+
+			delete customer
+
+			create table product
+
+		update acctable set balance=balance-5000 where acno=100;
+		update acctable set balance=balance+5000 where acno=200;
+
+
+
+		TCL
+
+		DCL
+
+
+	
+
+
+	
+
+C
+---
+		int empno;
+		char gender;
+		char ename[20];
+		
+
+Oracle
+---------
+		empno number,
+		gender char
+		ename  varchar2(20);
+
+CREATE
+------------
+create table employee
+(
+       empno number,
+       ename varchar2(20),
+       job   varchar2(20),
+       doj   date,
+       salary number,
+       comm number
+);
+
+
+RENAME
+-----------
+which one of the following is to rename a table employee to emp;
+
+	1) rename table employee to emp;
+	2) rename employee to emp;
+	3) rename table employee emp;
+	4) rename employee emp;
+
+DROP
+-------
+drop table tablename
+
+
+ 
+
+ALTER
+----------
+	- adding a new column
+		alter table emp add gross number;
+
+	- renaming the existing column
+		alter table emp rename column gross to grosssal;
+
+	- modify the data type of existing column
+
+		- alter table emp modify grosssal number(9,2);		
+		- alter table emp modify salary number(9,2);		
+		- alter table emp modify comm number(9,2);		
+
+	- drop the existing column
+		alter table emp drop column grosssal;
+	
+TRUNCATE 
+-------------
+
+		empty the table structure 
+
+
+
+insert into emp values (1010,'Jack','manager','1-Feb-2019',5000,600);
+insert into emp values (1011,'Jane','president','2-Feb-2018',9000,800);
+insert into emp values (1012,'Jill','clerk','5-Feb-2018',3000,300);
+
+insert into emp values (1019,'BOB','analyst','5-Feb-2017',7777,777);
+
+
+
+Normalization
+----------------
+
+	process of decomposing abnormal data
+
+	A	B	C	  D	E	F	G		H 
+	empno ename	job	  sal   pro_id	proj proj_date		hrs_wkd
+----------------------------------------------------------------------------------------
+	1010 rajesh 	president 5000	b101	bank 31-Jan-2019	4
+	1011 rajesh 	manager   3000	b101	bank 31-Dec-2020	30
+	1012 rajesh 	manager   3000	b101	bank 31-Dec-2020	30
+	1013 julie	testing	  3000  b101	bank 31-Dec-2020	40
+	1014 julie	testing	  3500  b101	bank 31-Dec-2020	600
+	1015 robert	analyst	  2000		-	-		-
+	-	-	-	  -	a101	air  20-Feb-2020	-
+	1012 rajesh 	manager   3000	r101	rail 30-Jun-2020	100
+	1013 julie	testing	  3000  r101	rail 30-Jun-2020	10
+	|
+	set
+	
+	
+	1. FNF
+	2. SNF
+	3. TNF
+		
+EMPLOYEE --> identified by its (unique + notnull ) => primary key
+	A	B	C	  D	
+	empno ename	job	  sal   
+----------------------------------------
+	1010 rajesh 	president 5000	
+	1011 rajesh 	manager   3000	
+	1012 rajesh 	manager   3000	
+	1013 julie	testing	  3000  
+	1014 julie	testing	  3500  
+	1015 robert	analyst	  2000	
+
+PROJECT
+	pro_id	proj proj_date		
+----------------------------------------
+	b101	bank 31-Dec-2020	
+	a101	air  20-Feb-2020	
+	r101	rail 30-Jun-2020	
+	
+	FK	FK	
+	A	B	C	  
+	empno pro_id	hrs_wkd
+----------------------------------------------------------------------------------------
+	1010 b101	4		
+	1011 b101	30
+	1012 b101	30
+	1013 b101	40
+	1014 b101	600
+	1015 -		-
+	1012 r101	100
+	1013 r101	10
+	1010 b101	2		
+
+
+
+	STD	ROLLNO	NAME
+	-----------------------------------
+	X	1	rajesh		
+	XI	1	rajesh		
+
+
+	STD	DIV	ROLLNO	NAME
+	-----------------------------------
+	X	A	1	rajesh		
+	X	B	1	rajesh
+	X	C	1	rajesh
+
+Nov 2018	
+
+Dec 2018
+Feb 2019
+
+m	1 SQL
+t	2 SQL
+w	3 SQL
+t	4 SQL
+f	5 SQL
+s	1 Java
+sun
+m	2 Java
+t	3 Java
+w	4 Java
+t	5
+f	6
+s	7
+sun
+m	8
+t	9
+w	10
+t	11
+f	12
+s	13
+sun	
+m	14	project submission day + mock
+t	15	project submission day + mock
+
+w	16	<--assessment 
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

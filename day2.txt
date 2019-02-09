@@ -1,0 +1,117 @@
+	ADMIN					ENDUSER
+
+
+				CRUD
+
+busid	source	dest	bustype	deptdate	deptime	passname	email	mobile	age	gender	cops	busarridate	busarritime	distance	seatno		bookingid
+101	mumbai	delhi	acvolvo	10-Mar-2019	20.00	vishal		vishal@	992	99	M	5	11-Mar-2019	18:00		1200		9		987
+101	mumbai	delhi	acvolvo	10-Mar-2019	20.00	saee		vishal@	992	99	M	5	11-Mar-2019	18:00		1200		10		987
+101	mumbai	delhi	acvolvo	10-Mar-2019	20.00	sailee		vishal@	992	99	M	5	11-Mar-2019	18:00		1200		11		987
+101	mumbai	delhi	acvolvo	10-Mar-2019	20.00	prabhakar		vishal@	992	99	M	5	11-Mar-2019	18:00	1200	12			987
+101	mumbai	delhi	acvolvo	10-Mar-2019	20.00	pragati		vishal@	992	99	M	5	11-Mar-2019	18:00		1200		13		987
+
+
+101	mumbai	delhi	acvolvo	10-May-2019	20.00	vishal		vishal@	992	99	M	5	11-May-2019	18:00		1200		9	
+101	mumbai	delhi	acvolvo	10-Jun-2019	20.00	vishal		vishal@	992	99	M	5	11-Jun-2019	18:00		1200		9	
+101	mumbai	delhi	acvolvo	10-Jul-2019	20.00	vishal		vishal@	992	99	M	5	11-Jul-2019	18:00		1200		9	
+101	mumbai	delhi	acvolvo	10-Aug-2019	20.00	vishal		vishal@	992	99	M	5	11-Aug-2019	18:00		1200		9	
+101	mumbai	delhi	acvolvo	10-Sep-2019	20.00	vishal		vishal@	992	99	M	5	11-Sep-2019	18:00		1200		9	
+101	mumbai	delhi	acvolvo	10-Oct-2019	20.00	vishal		vishal@	992	99	M	5	11-Oct-2019	18:00		1200		9	
+102	mumbai	pune	acvolvo	25-Mar-2019	10.00	vishal		vishal@	992	99	M	1	25-Mar-2019	13:00		200		9	
+
+101	mumbai	delhi	  acvolvo	10-Jul-2019	20.00	vishal		vishal@	992	99	M	5	11-Jul-2019	18:00		1200		9		
+102	mumbai  bangalore acvolvo	..	..	..	..	..	..	..	...
+
+
+	mumbai	panvel	khopoli	lonavala  pune	
+	0	50	100	150	  200
+	
+		  0 <-- driver
+
+1	111	000
+2	110	000
+3	000	000
+4	000	000
+5	000	000
+6	000	000
+
+
+Enterprise application
+
+bus <-- services
+
+	bus enquiry
+	ticket booking
+	seat selection
+	seat cancel
+	return journey
+	food on seat
+	cashback
+	
+
+
+	local book seller		vs 	amazon
+
+
+1. remote capability
+	socket programming
+	
+2. time flexibility 24 X 7 -> high availability
+	clustering
+
+3. multithreading
+	H T M B 
+
+4. pooling
+	same type of resources 
+
+	select * from flightbooking where source='mumbai' and dest='london' and deptdate='10-May-2019'
+
+		FLCODE	S	D	DT    CAP  BKD   .....			
+		JE-101  MUM  LON  10-May-2019  200  190 ..	..	..
+
+
+		jetairways
+		|
+	enquiry		confirmation	
+stateless Session	statefull session
+		1000
+	
+
+		1000 	5 Feb 2019
+		Mumbai London	JE-101	2am	200	10-May-2019
+
+5. caching
+	unique resources
+
+6. transactions
+7. security
+
+
+
+
+
+
+
+
+
+	
+
+
+
+		dbserver <-- data
+		|
+		app server <-- logic
+		|
+	------------------------------
+	|	|	|	|	|	|
+	cl	cl2	cl3	cl4	cl5	cl6
+
+
+
+
+
+
+
+
+

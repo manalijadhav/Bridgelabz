@@ -1,0 +1,48 @@
+
+
+
+	
+
+C
+---
+		int empno;
+		char gender;
+		char ename[20];
+		
+
+Oracle
+---------
+		empno number,
+		gender char
+		ename  varchar2(20);
+
+	
+create table employee
+(
+       empno number,
+       ename varchar2(20),
+       job   varchar2(20),
+       doj   date,
+       salary number,
+       comm number
+);
+
+
+which one of the following is to rename a table employee to emp;
+
+	1) rename table employee to emp;
+	2) rename employee to emp;
+	3) rename table employee emp;
+	4) rename employee emp;
+
+
+
+
+
+
+
+
+
+
+
+	

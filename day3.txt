@@ -1,0 +1,251 @@
+select ename || ' is a ' || job || ' earning ' || sal from emp;
+select job,sum(sal),count(job) from emp 
+group by job having count(job) > 3 order by job;
+
+
+
+
+NESTED QUERY 
+--------------
+
+	query within a query
+
+	query1(query2(query3))
+	|	 |	|
+	dept	emp	customer
+	|	|	|
+	dname	ename	name
+
+	select ...dept (  select ... emp ( select ...customer) ) 
+
+JOINS
+-----------
+	query1 on dept,emp,customer
+	select dname,ename,name from dept,emp,customer 
+
+
+       SELECT empno,ename,job,sal FROM emp WHERE deptno = 10 and
+       sal >= ANY
+ 	(SELECT sal FROM emp WHERE deptno = 30)
+
+
+	query1 ( query2 (query3)  query2 (query5) )	query1
+	|	|  	   |	   |	    |	  |	|
+	|	|		   | 		  |	|
+	|	+------------------+--------------+	|
+	|						|
+	+-----------------------------------------------+
+
+
+ SELECT empno,ename,job,sal,deptno FROM emp WHERE deptno <> 30 and
+       sal >= ALL
+ 	(SELECT sal FROM emp WHERE deptno = 30)
+
+
+	
+	select * from a , b whre .....
+
+1) natural join
+select dept.deptno,dname,loc,empno,ename,job,emp.deptno from dept,emp;
+
+2) equi join
+select dept.deptno,dname,loc,empno,ename,job,emp.deptno from dept,emp
+where dept.deptno = emp.deptno;
+
+3) non-equi join
+select empno,ename,job,sal,grade from emp,salgrade
+where sal between losal and hisal;
+
+4) right outer join
+	select * from table1
+	right outer join table2
+	on table1.column = table2.column
+
+	select * from authors
+	right outer join books
+	on authorid = aid;
+
+	select * from books
+	right outer join authors
+	on authorid = aid;
+
+	select dept.deptno,dname,loc,empno,ename,sal from emp
+	right outer join dept
+	on emp.deptno = dept.deptno;
+
+5) left outer join
+	select * from table1
+	left outer join table2
+	on table1.column = table2.column
+
+	select * from authors
+	left outer join books
+	on authorid = aid;
+
+	select * from books
+	left outer join authors
+	on authorid = aid;
+
+	select dept.deptno,dname,loc,empno,ename,sal from emp
+	LEFT outer join dept
+	on emp.deptno = dept.deptno;
+
+
+6) full outer join
+	select * from table1
+	full outer join table2
+	on table1.column = table2.column
+
+	select dept.deptno,dname,loc,empno,ename,sal from emp
+	FULL outer join dept
+	on emp.deptno = dept.deptno;
+
+	select * from books
+	FULL outer join authors
+	on authorid = aid;
+
+	select constraint_name,constraint_type
+	from user_constraints where table_name='EMP';
+
+	alter table emp DISAble constraint EMP_FOREIGN_KEY;
+
+	update emp set deptno=90 where ename='KING';
+
+	SELECT MAX(SAL) FROM EMP
+	WHERE SAL < (SELECT MAX(SAL) FROM EMP;
+
+	select * from books,authors
+	where bookid = bid;
+
+
+select * from books,authors
+    where bookid= bid(+)
+union 
+select * from books,authors
+    where bookid(+)= bid;
+
+
+	
+	DDL - table related
+	DML - row related
+	DQL - select query
+	TCL - commit, rollback, savepoint
+	DCL - grant revoke
+
+nvarchar vs char	varchar varchar2	
+	     |		|	|
+	    2000	4000	32767
+
+	int player;
+	int player2;
+
+	class SavingsAccount { }
+	class SavingsAccount2 { }
+	
+
+	composite primary key
+	sequence
+	view
+			create table Account
+			(
+				int number,
+			)
+		
+			database server ----> tables
+			|
+			hibernate
+			|
+			app server
+			|  class Account  { int number 
+create table accounts
+(
+	acno number,	acname varchar2(10),  	balance number
+);
+insert into accounts values (10,'Suresh',10000);
+insert into accounts values (20,'Haresh',7000);
+commit;
+select * from accounts;
+update accounts set balance=balance-2000 where acno=10;
+update accounts set balance=balance+2000 where acno=20;
+savepoint a;
+	insert into accounts values (30,'seeta',3000);
+	insert into accounts values (40,'reeta',6000);
+savepoint b;
+select * from accounts;
+rollback to a;
+select * from accounts; ... ... 
+
+
+
+
+system/Newuser123
+ |
+create user scott identified by tiger;
+		|		|
+	  username		password
+SQL> connect 
+	enter usenamer : scott	enter password : tiget
+	 user SCOTT lacks CREATE SESSION privilege; logon denied
+	disconnected ..
+SQL>  conn system/Newuser123
+SQL>  grant create session to scott
+SQL>  conn scott/tiger
+SQL>  create table a( b number ) ...error
+SQL>  conn system/Newuser123
+SQL>  grant all privileges to scott
+SQL>  conn scott/tiger
+SQL>  create table a( b number ) .....success..
+SQL>  conn system/Newuser123
+SQL>  revoke all privileges from scott
+SQL>  conn scott/tiger
+SQL>  session cant connect.failed.
+
+
+
+
+
+
+
+	PK	U+NN	U+NN	U+NN
+	a	b	c	d	e	f	g
+
+	composite primary key
+
+	<-------PK----------->
+	std	div	rollno	name	age
+
+CREATE TABLE STUDENT
+    (
+       std  varchar2(10),
+       div  char(1),
+       rollno number,
+       name varchar2(10),
+       age number,
+       primary key (std,div,rollno),
+       check (age>18)
+   );
+
+CREATE TABLE STUDENT_MARKS
+    (
+       std  varchar2(10),
+       div  char(1),
+       rollno number,
+       phy number,
+       chem number,
+       maths number,
+       foreign key (std,div,rollno) references STUDENT
+   );
+
+
+
+
+
+
+
+
+
+
+
+
+
+

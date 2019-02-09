@@ -1,0 +1,392 @@
+
+
+	PL - SQL
+
+
+	Procedural Language - SQL
+
+Annonymous block
+
+	begin
+		select * from emp;
+	end
+
+Named block
+create function fun()
+	begin
+		select * from emp;
+	end
+
+
+declare
+       a number;
+       b number;
+    begin
+        a:=100;
+        b:=200;
+        dbms_output.put_line('value of a ' || a);
+        dbms_output.put_line('value of b ' || b);
+    end;
+ 
+
+declare
+   a number:=100;
+   b number:=200;
+begin
+        dbms_output.put_line('value of a ' || a);
+        dbms_output.put_line('value of b ' || b);
+end;
+
+
+declare
+   a number;
+   b number;
+begin
+        dbms_output.put_line('value of a ' || a);
+        dbms_output.put_line('value of b ' || b);
+end;
+
+	1. what is the default of pl sql number variable
+
+		a. 0
+		b. null
+		c. none of the above
+		d. all of the above
+
+1. Which one of the following constraint 
+   does not need value in the insert query ?
+
+	a. default	
+	b. primary key
+	c. null
+	d. sequence
+
+
+
+
+ select dname,loc,ename,job,name  from dept,emp,customer
+   where dept.deptno = emp.deptno AND
+   emp.empno = customer.repid 
+   and ename='MARTIN';
+
+	ORDER ITEM PRODUCT 
+c
+
+        select dname,   loc,          ename,  job,   name,    address,     ordid,   prodid,   orderdate, shipdate,     total,     descrip
+		|	|		|	|	|	|	    |		|	|	   |		|		|
+	INTO   deptName,deptLocation, empName,empJob,custName,custAddress, orderid,productid, orderdate, ordershipdate,ordertotal,productdescrip
+
+
+
+
+
+
+create or replace view martinview
+as
+select 
+	dname,   loc,  ename,  job,   name,    address,     
+	ord.ordid,   product.prodid,  orderdate, shipdate,total,descrip
+	from dept,emp,customer,ord,item,product 
+	where dept.deptno = emp.deptno AND
+		   emp.empno = customer.repid AND
+		   customer.custid = ord.custid AND
+		   ord.ordid = item.ordid AND
+		   item.prodid = product.prodid 
+		   and ename='MARTIN' and 
+	ord.ordid=614 ;
+------------------------------
+create or replace view empsalslip
+as
+ select empno,ename,job,sal,comm,sal+nvl(comm,0) as gross, sal*0.40 as
+ bonus from emp;
+
+
+declare
+    dno dept.deptno%type;
+    dnm dept.dname%type;
+    lc  dept.loc%type;
+begin
+	select deptno,dname,loc into dno,dnm,lc from dept where deptno=10;
+	dbms_output.put_line('Dept number : ' || dno);
+	dbms_output.put_line('Dept name   : ' || dnm);
+	dbms_output.put_line('Dept loc    : ' || lc);
+end;
+
+declare
+    deptdetails dept%rowtype;
+begin
+	select * into deptdetails from dept where deptno=10;
+	dbms_output.put_line('Dept number : ' || deptdetails.deptno);
+	dbms_output.put_line('Dept name   : ' || deptdetails.dname);
+	dbms_output.put_line('Dept loc    : ' || deptdetails.loc);
+end;
+
+declare
+    empdetails emp%rowtype;
+begin
+	select * into empdetails from emp where empno=7839;
+	dbms_output.put_line('Emp number : ' || empdetails.empno);
+	dbms_output.put_line('Emp name   : ' || empdetails.ename);
+	dbms_output.put_line('Emp loc    : ' || empdetails.job);
+	dbms_output.put_line('Emp sal    : ' || empdetails.sal);
+end;
+
+
+declare
+	type empStruct IS RECORD
+	(
+		eno emp.empno%type,
+		enm emp.ename%type,
+		jb emp.job%type,
+		sal emp.sal%type
+	);
+	empRecord empStruct;
+	begin
+		select empno,ename,job,sal into empRecord from emp where empno=7839;
+		dbms_output.put_line('Emp number : ' || empRecord.eno);
+		dbms_output.put_line('Emp name   : ' || empRecord.enm);
+		dbms_output.put_line('Emp loc    : ' || empRecord.jb);
+		dbms_output.put_line('Emp sal    : ' || empRecord.sal);
+end;
+
+	Programming language		vs		Scripting
+	|						|
+	mission critical			automation of client side
+	business logic 				code,queries
+
+declare
+	type myStruct IS RECORD
+	(
+
+		dnm dept.dname%type,
+		enm emp.ename%type,
+		cnm customer.name%type
+	);
+	myRecord myStruct;
+	begin
+		select dname,ename,name into myRecord from customer,dept,emp
+		where dept.deptno = emp.deptno and
+		emp.empno = customer.repid and emp.empno=7654;
+
+		dbms_output.put_line('Dept name   : ' || myRecord.dnm);
+		dbms_output.put_line('Emp  name   : ' || myRecord.enm);
+		dbms_output.put_line('Cust name   : ' || myRecord.cnm);
+end;
+
+
+
+
+
+type empStruct IS RECORD
+(
+	eno emp.empno%type,
+	enm emp.ename%type,
+	jb emp.job%type,
+	sal emp.sal%type
+);
+empRecord empStruct;
+
+
+
+teamwork
+leadership skills
+adherance to schedule
+self learning
+
+presentation skills
+analysis
+design
+coding skills
+reasoning ability
+technical knowledge
+
+
+
+
+
+declare
+	a number:=100;
+begin
+	declare
+		b number:=200;	
+	begin
+		dbms_output.put_line('IB: a ' || a);
+		dbms_output.put_line('IB: b ' || b);
+	end;
+	dbms_output.put_line('OB: a ' || a);
+	-- dbms_output.put_line('OB: b ' || b);
+end;
+		
+
+
+
+
+declare
+	deptno   dept.deptno%type:=&a;
+	deptname dept.dname%type:='&b';
+	deptloc  dept.loc%type:='&c';
+
+begin
+	dbms_output.put_line('Start the script...');
+	insert into dept values (deptno,deptname,deptloc);
+	commit;
+	dbms_output.put_line('End the script...');
+end;
+
+ DECLARE
+      A NUMBER:='&Age';
+    BEGIN
+        IF A >= 18 THEN
+               dbms_output.put_line('You can vote');
+       else
+               dbms_output.put_line('You can not vote');
+       end if;
+    end;
+ 
+ 
+ DECLARE
+      A NUMBER:='&Age';
+    BEGIN
+        IF A >= 120 THEN
+               dbms_output.put_line('Invalid age.');
+       else 
+		if A < 0 then
+			dbms_output.put_line('Invalid age..cannot be negative..');
+	       else 
+			if A >= 18 then
+				dbms_output.put_line('You can vote : age '||a);
+			else
+				dbms_output.put_line('You cannot vote : age..');
+			end if;
+		end if;
+       end if;
+    end;
+/
+
+
+
+
+
+    declare
+       x number:=1;
+    begin
+          dbms_output.put_line('Begin the script');
+          loop
+              dbms_output.put_line('x : '||x); x:=x+1; exit when x>5;
+          end loop;
+         dbms_output.put_line('End the script');
+    end;
+----------------------------------------
+    declare
+       x number:=1;
+    begin
+          dbms_output.put_line('Begin the script');
+          while ( x <= 5 )
+	  loop
+              dbms_output.put_line('x : '||x);   x:=x+1;
+          end loop;
+         dbms_output.put_line('End the script');
+    end;
+-------------------------------------------
+DECLARE
+	myNo NUMBER(5):= &myno; 
+	counter NUMBER(5):=1;
+BEGIN
+ 	FOR i IN 2..myNo-1
+		LOOP
+ 			counter:= counter+1;
+ 			EXIT WHEN myNo mod i = 0;
+ 		END LOOP;
+ 
+		IF counter = myNo-1 THEN
+  		DBMS_OUTPUT.PUT_LINE( 'The given 
+			number is prime' );
+		ELSE
+			DBMS_OUTPUT.PUT_LINE('The given number is not 
+              a prime number' );
+		END IF;
+END;
+/
+
+ declare
+       i number;
+    begin
+      for i in 10..1  
+      loop
+             dbms_output.put_line('i is '||i);
+      end loop;
+   end;
+
+
+
+	Cursor -> pointer to the active data set
+
+		implicit cursor is    SQL
+
+	cursor attributes
+
+			SQL%FOUND
+			SQL%NOTFOUND
+			SQL%ISOPEN
+			SQL%ROWCount
+
+  declare
+     dno number:=&temp;
+    begin
+       delete from myemp1 where deptno=dno;
+	if SQL%notfound then 
+		DBMS_OUTPUT.PUT_LINE('Records not Found : ' || dno);
+	else
+	       DBMS_OUTPUT.PUT_LINE('Total records deleted ' || SQL%ROWcount);            
+	end if;
+    end;
+  
+
+	1. declare cursor
+	      cursor empcur IS select deptno,dname,loc from dept;
+
+	2. open the cursor
+		open empcur;
+
+	3. iterate over the collection pointed by the cursor
+		fetch empcur into values..
+
+	4. close the cursor/
+
+		close empcur;
+
+
+declare
+       dno number;       dnm varchar2(20);       dloc varchar2(20);
+
+
+
+
+       cursor empcur is select deptno,dname,loc from dept;
+    begin
+	DBMS_OUTPUT.PUT_LINE('Begin the main');
+	open empcur;
+	  loop
+	   fetch empcur into dno,dnm,dloc;
+             DBMS_OUTPUT.PUT_LINE('-------------------------');
+             DBMS_OUTPUT.PUT_LINE('Dept no : ' || dno);
+             DBMS_OUTPUT.PUT_LINE('Dept nm : ' || dnm);
+             DBMS_OUTPUT.PUT_LINE('Dept lc : ' || dloc);
+           exit when empcur%notFoUnd;
+	 end loop;
+	close empcur;
+	DBMS_OUTPUT.PUT_LINE('end of main ');
+  end;
+/
+----------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+	

@@ -1,0 +1,215 @@
+
+	oracle sql			10
+		ddl	dml	dql	tcl	dcl  constraints
+		nestedqueries	joins
+
+	oracle pl/sql			10
+
+	java				30
+
+
+constraints
+---------------
+
+		restrictions on the table for DML
+
+
+	1	primary key	(unique + not null )
+	
+	2	unique		might have null values
+
+	3	check		salary comm
+
+	4.	not null ( not blank OR must have value )
+
+	5.	foreign key <-- referential
+
+
+STUDENT
+--------------
+	PK	NN	NN	unique
+	rollno	name	gender	email
+	1	suresh	M	suresh@gmail.com
+	2	ramesh	M	ramesh@gmail.com
+	3	haresh	M	haresh@gmail.com
+	5	reeta	F	reeta@gmail.com
+
+
+MARKS
+	FK+null	check
+	rollno	sem	physic	chem	maths	total	per	grade
+	1	I	99	
+	1	II	89
+	1	III	99
+	1	IV	88	
+	1	VI	83
+	1	XII	70
+	-	VII	23
+	1	VIII	53
+		VI	80
+		VI	80
+		VI	80
+
+		DATA entry from
+		|
+		enter rollno 	   : 1
+		enter sem
+		
+		enter physics marks : 80
+		enter physics marks : 80
+		enter physics marks : 80
+		enter physics marks : 80
+
+
+	null
+	|
+	notnull
+
+
+	asynchronous			synchronous
+
+
+
+
+unique+notnull		null			notnull
+rollno			newpaper		gender
+1			-			M
+1			-			M
+1			-			M
+2			-			M
+2			-			M
+2			-			M
+3			TOI			M
+3			TOI			M
+3			Oracle 			
+4			DNA			M
+
+
+
+
+
+
+
+	table level constraint	vs	column level constraints
+
+
+column level constraints
+-----------------------------
+create table employee
+(
+  empno number primary key,
+  ename varchar2(20) not null,
+  job   varchar2(20) check (job in ('manager','president','clerk','analyst')),
+  doj   date check (doj < '1-Feb-2019'),
+  salary number check (salary > 5000),
+  comm number check (comm < 500)
+)
+
+system generated contraint names
+(SYSTEM.SYS_C003904)
+(SYSTEM.SYS_C003900)
+(SYSTEM.SYS_C003901)
+(SYSTEM.SYS_C003902)
+(SYSTEM.SYS_C003903)
+
+
+constraint constraintname constraint type
+|		|		|
+constraint empno_pk 	  primary key
+constraint job_invalid    check (job in ('manager','president','clerk','analyst')),
+constraint ename_nn 	  not null
+
+create table employee1
+(
+  empno number constraint empno_pk primary key,
+  ename varchar2(20) constraint ename_nn not null,
+  job   varchar2(20) constraint job_invalid check (job in ('manager','president','clerk','analyst')),
+  doj   date constraint doj_below_1Feb19 check (doj < '1-Feb-2019'),
+  salary number constraint sal_above_5k check (salary > 5000),
+  comm number constraint comm_below_500 check (comm < 500)
+)
+
+
+
+deptartment
+-----------
+
+	PK <--REFERRED
+	|
+	deptno	dname		location	PAN
+	10	IT		mumbai
+	20	TESTING		pune
+	30	QMS		chennai
+
+create table department
+(
+   deptno number constraint dept_pk primary key,
+   dname  varchar2(10) constraint uniq_dname unique,
+   location varchar2(10) 
+);
+	PK	NOTNULL CHECK   FK
+	|	|	|	|
+	EMPNO	ENAME	SALARY	DNO <-- REFERENTIAL 
+	------------------------------
+	101	SURESH	5000	10
+	102	HARESH	6000	10
+	103	RAMESH	6000	20
+	104	REETA	7000	30
+	105	SEEMA	8000	10
+CREATE TABLE EMP3
+(
+	EMPNO NUMBER PRIMARY KEY,
+	ENAME VARCHAR2(10) NOT NULL,
+	SALARY NUMBER,
+	DNO NUMBER REFERENCES DEPARTMENT (DEPTNO)
+)
+
+
+
+
+
+
+table level constraints
+----------------------------
+
+create table department1
+(
+   deptno number, 
+   dname  varchar2(10) ,
+   location varchar2(10),
+   constraint dept_pk1 primary key(DEPTNO),
+   constraint uniq_dname1 unique(DNAME)
+);
+
+CREATE TABLE EMP4
+(
+	EMPNO NUMBER,
+	ENAME VARCHAR2(10) NOT NULL,
+	SALARY NUMBER,
+        COMM NUMBER,
+	DNO NUMBER,
+	PRIMARY KEY(EMPNO),
+	FOREIGN KEY (DNO) REFERENCES DEPARTMENT (DEPTNO),
+        CHECK (SALARY >5000),
+        CHECK (COMM < SALARY)
+)
+
+insert into deparTment1 values (&a,'&b','&c');
+
+
+ @d:\vishhal\demo.txt <-- to run the demo.txt from a given path
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

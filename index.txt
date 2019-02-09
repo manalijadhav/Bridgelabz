@@ -1,0 +1,42 @@
+
+
+		array
+
+
+Compiler and OS (cpu) 
+
+x86		x86
+MSWIN		UnIX
+|		|
+Borland TC	Borland TC
+ (2)		(4)
+MS-VC++		
+ (4)
+
+	int score[5]={80,70,90,77,92};
+
+		   0	   1	   2	   3	  4
+		-----------------------------------------
+		|80	|70	|90	|77	|92	|
+		-----------------------------------------	
+		42852   |42854  |42856  |42858  |42860
+
+	c programming language - DR
+
+
+	score[3];
+
+	*(base addressOfTheArray + (sizeofType * index ) )
+	|     
+   valueAt  ( 42852		 + ( 2 * 3 ) )
+   valueAt  ( 42852		 + ( 6 ) )
+   valueAt  ( 42858)
+	
+
+
+	
+
+
+
+
+		
