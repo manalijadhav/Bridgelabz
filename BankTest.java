@@ -1,78 +1,75 @@
 
-//testing entity
-class BankTest
+class Bank
 {
+	private int accNumber;
+	private String	Name;
+	private double Bal;
+
+	void setAccount(int an,String nm,double bl)
+	{
+	System.out.println("Setting account.....");
+	accNumber=an;
+	Name=nm;
+	Bal=bl;
+	}
+
+	void withdraw(int wdrawAm)
+	  if(amountToWithdraw < accountBalance) {	{
+	System.out.println("withdrawing amount :"+wdrawAm);
+	accountBalance accountBalance -amounToWithdraw;
+	
+	}
+   else{
+	System.out.println("insufficient funds");
+}
+
+	void Deposit(int depo)
+	{
+	System.out.println("Depositing amount :"+depo);
+	Bal=Bal+depo;
+	}
+
+	void showAcc()
+	{
+	System.out.println("Account Number:		"+accNumber);
+	System.out.println("Account Holder Name:	"+Name);
+	System.out.println("Account Balance		"+Bal);
+	System.out.println("------------------------------------------------");
+	}
+class BankTest
+	{
 	public static void main(String args[])
 	{
-		System.out.println("starting the bank....");
-		
-		BankAccount bankObj1 = new BankAccount();
-		BankAccount bankObj2 = new BankAccount();
-		BankAccount bankObj3 = new BankAccount();
+	Bank bankObj1 = new Bank();
+	Bank bankObj2 = new Bank();
+	Bank bankObj3 = new Bank();
 
-		System.out.println("---------------------------------------");
+	bankObj1.showAcc();
+	bankObj2.showAcc();
+	bankObj3.showAcc();
 
-		bankObj1.showBankAccount();
-		bankObj2.showBankAccount();
-		bankObj3.showBankAccount();
+	bankObj1.setAccount(1,"abc",56000);
+	bankObj2.setAccount(2,"apurva",76000);
+	bankObj3.setAccount(3,"shivali",56890);
 
+	bankObj1.showAcc();
+	bankObj2.showAcc();
+	bankObj3.showAcc();
 
-		bankObj1.setBankAccount(101,"Julie",50000);
-		bankObj1.showBankAccount();
-		System.out.println("---------------------------------------");
-		bankObj2.setBankAccount(102,"Robert",90000);
-		bankObj2.showBankAccount();
-		System.out.println("---------------------------------------");
-		bankObj3.setBankAccount(103,"Rosa",120000);
-		bankObj3.showBankAccount();
-		System.out.println("---------------------------------------");
+	bankObj1.withdraw(7000);
+	bankObj2.withdraw(6000);
+	bankObj3.withdraw(5000);
 
-		bankObj1.withdraw(6000);
-		bankObj1.showBankAccount();
-		bankObj2.withdraw(7000);
-		bankObj2.showBankAccount();
-		bankObj3.withdraw(8000);
-		bankObj3.showBankAccount();
+	bankObj1.showAcc();
+	bankObj2.showAcc();
+	bankObj3.showAcc();
 
+	bankObj1.Deposit(2000);
+	bankObj2.Deposit(6000);
+	bankObj3.Deposit(1000);
 
-		bankObj1.deposit(4000);
-		bankObj1.showBankAccount();
-		bankObj2.deposit(5000);
-		bankObj2.showBankAccount();
-		bankObj3.deposit(6000);
-		bankObj3.showBankAccount();
-	}
-}
-// business entity
-class BankAccount
-{
-	private int accountNumber; 
-	private String accountHolder; 
-	private double accountBalance;
-
-	void withdraw(double amountToWithdraw)	{
-		System.out.println("Withdrawing......"+amountToWithdraw);
-		accountBalance = accountBalance - amountToWithdraw;
-		System.out.println("---------------------------------------");
-	}
-	void deposit(double amountToDeposit) 
-	{
-		//if(amountTo
-		
-		System.out.println("Depositing......"+amountToDeposit);
-		accountBalance = accountBalance + amountToDeposit;
-		System.out.println("---------------------------------------");
-	}
-	void setBankAccount(int acno, String achn, double accBal)
-	 {
-		System.out.println("Setting BankAccount....");
-		accountNumber = acno;	accountHolder = achn;
-		accountBalance = accBal;
-	}
-	void showBankAccount() 
-	{
-		System.out.println("Account Number  : "+accountNumber);
-		System.out.println("Account Holder  : "+accountHolder);
-		System.out.println("Account Balance : "+accountBalance);
+	bankObj1.showAcc();
+	bankObj2.showAcc();
+	bankObj3.showAcc();
 	}
 }

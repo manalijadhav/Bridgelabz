@@ -1,0 +1,88 @@
+
+//testing entity
+class BankTest
+{
+	public static void main(String args[])
+	{
+		System.out.println("starting the bank....");
+		BankAccount bankObj1 = new BankAccount();
+		BankAccount bankObj2 = new BankAccount();
+		BankAccount bankObj3 = new BankAccount();
+		System.out.println("----------------------------------");
+
+		bankObj1.showBankAccount();
+		bankObj2.showBankAccount();
+		bankObj3.showBankAccount();
+
+		bankObj1.setBankAccount(101,"Julie",50000);
+		bankObj2.setBankAccount(102,"Robert",50000);
+		bankObj3.setBankAccount(103,"Smith",50000);
+
+		bankObj1.showBankAccount();
+		bankObj2.showBankAccount();
+		bankObj3.showBankAccount();
+
+		bankObj1.withdraw(6000);
+		bankObj2.withdraw(8000);
+		bankObj3.withdraw(10000);
+
+		bankObj1.showBankAccount();
+		bankObj2.showBankAccount();
+		bankObj3.showBankAccount();
+
+		bankObj1.deposit(4000);
+		bankObj2.deposit(6000);
+		bankObj3.deposit(8000);
+
+		bankObj1.showBankAccount();
+		bankObj2.showBankAccount();
+		bankObj3.showBankAccount();
+		
+	}
+}
+// business entity
+class BankAccount
+{
+
+	//data members /  fields
+	private int accountNumber; 
+	private String accountHolder;
+	private double accountBalance;
+
+	void withdraw(double amountToWithdraw)	{
+		
+		if (amountToWithdraw < accountBalance)
+		{
+			System.out.println("Withdrawing......"+amountToWithdraw);
+			accountBalance = accountBalance - amountToWithdraw;
+		}
+		else {
+			System.out.println("Insuffient Funds");
+		}
+		System.out.println("----------------------------------");
+		
+	}
+	void deposit(double amountToDeposit) {
+		if(amountToDeposit >0) {
+		System.out.println("Depositing......"+amountToDeposit);
+		accountBalance = accountBalance + amountToDeposit;
+		System.out.println("----------------------------------");
+		}
+		else
+			System.out.println("amount cannot be negative");
+		
+	}
+	void setBankAccount(int acno, String achn, double accBal) {
+		System.out.println("Setting BankAccount....");
+		accountNumber = acno;	
+		accountHolder = achn;
+		accountBalance = accBal;
+		System.out.println("----------------------------------");
+	}
+	void showBankAccount() {
+		System.out.println("Account Number  : "+accountNumber);
+		System.out.println("Account Holder  : "+accountHolder);
+		System.out.println("Account Balance : "+accountBalance);
+		System.out.println("----------------------------------");
+	}
+}
