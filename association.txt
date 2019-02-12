@@ -1,0 +1,65 @@
+package association;
+
+public class Association {
+
+    public static void main(String[] args) {
+ 
+    }
+    
+    class Kid{
+        void Write(){
+            System.out.println("Kid is Writing");
+                    
+        }
+    }
+    
+    class Knowledge{
+        
+        private void startLearning(){
+            
+            System.out.println("Kid is Learning to write");
+                    
+                    
+        }
+        
+        void startWriting(){
+            
+            System.out.println("Starting...........");
+            startLearning();
+                    
+        }
+    }
+    
+    class Toddler extends Kid{  //Toddler is a kid
+        
+        String name; //has a name
+        int age;   //has age
+        Knowledge know = new Knowledge();
+        void startWriting(){
+            
+            name = "Jane";
+            System.out.println(name+ "is Trying to learn");
+            know.startWriting();
+            System.out.println("Started...");
+            Write();
+        }
+        
+        Word startWriting(Slate s){
+            
+            System.out.println("Trying to write");
+            know.startWriting();
+            Write();
+            
+            Word w = new Word();
+                    
+                    return w;
+        }
+        class Word {
+            
+            void GenerateWord(){
+                System.out.println("");
+            }
+        }
+    }
+    
+}
