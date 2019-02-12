@@ -1,0 +1,97 @@
+
+	
+
+	why		
+
+	fundtransfer(sa,ta,amount);
+	{
+		if ta found then
+			ta found 	
+			if sa found then
+				sa found
+				if sa.bal > amount
+					sa.bal = sa.bal - amount
+					ta.bal = ta.ba + amount
+				else
+					sa.bal is insufficient
+				end if
+			else
+				sa not found
+				
+			end if
+		
+		else
+			ta not found
+		end if
+			
+		
+		
+	}
+
+
+	fundtransfer(sa,ta,amount);
+	{
+		try
+		{
+		1	ta found 
+		2	sa found
+		3	sa.bal > amount
+		4	sa.bal = sa.bal - amount
+		5	ta.bal = ta.ba + amount
+			commit;
+		}
+		catch(sa insuff bal) { }
+		catch(sa not found) { }
+		catch(ta not found) { }
+	}
+
+
+begin
+ ....
+end;
+-------------------
+declare
+	...
+begin
+	...
+end;
+----------------
+
+declare
+	...
+begin
+	...
+	..
+	..
+	..
+	EXCEption
+		..
+		...
+		..
+end;
+
+
+	fundtransfer(sa,ta,amount);
+	begin
+		
+		
+		1	ta found 
+		2	sa found
+		3	sa.bal > amount
+		4	sa.bal = sa.bal - amount
+		5	ta.bal = ta.ba + amount
+			commit;
+
+		EXCEPTION		
+			catch(sa insuff bal) { }
+			catch(sa not found) { }
+			catch(ta not found) { }
+	end;
+
+----------------------------------
+
+
+		when VALUE_ERROR then
+			dbms_output.put_line('number precision too large..');
+
+

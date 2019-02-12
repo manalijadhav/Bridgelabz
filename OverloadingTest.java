@@ -1,64 +1,33 @@
-public class OverloadingTest
-{ 
-	String accountName ;
-int accountNumber;
-int accountBalance;
-
-int num=100;
-	public static void main(String[] args) {
-		OverloadingTest setacc = new OverloadingTest();
-		setacc.setaccount("&ishi", -100, 10000);
-		Branch obj= new Branch();
-	
+class Phone
+{
+	void dial() 	{
+		System.out.println("Dialing() nowhere....");
 	}
- void setaccount(String accN,int accNo,int accB) {
-	 char alpha=' ';
-	 for(int i=0;i < accN.length();i++ )
-	 {
-		 alpha = accN.charAt(i);
-		 if(alpha>=65&&alpha<=90 || alpha>=97&&alpha<=122)
-		 {
-		 accountName=accN;
-		 }
-		 else {
-		 System.out.println("invalid account name");
-		 }
+	void dial(byte number) {
+		System.out.println("Dialing(byte)....."+number);
 	}
-	 if(accNo>0)
-	 {
-		 accountNumber=accNo;}
-	 else {
-		 System.out.println("invalid number");}
-	 }
- OverloadingTest()
- { 
-	
-	 
- }
+	void dial(String name) {
+		System.out.println("Dialing(String)....."+name);
+	}
+	void dial(int exten) {
+		System.out.println("Dialing(int)....."+exten);
+	}
+	void dial(byte stdcode, long number) {
+		System.out.println("Dialing(byte,long)....."+stdcode+" number "+number);
+	}
+	void dial(long number,byte stdcode ) {
+		System.out.println("Dialing(long,byte)....."+stdcode+" number "+number);
+	}
 }
+public class OverloadingTest {
+	public static void main(String[] args) {
+		Phone myPhone = new Phone();		myPhone.dial();
+		byte police=100;		myPhone.dial(police);
+		myPhone.dial("Seema");
+		int extNumber=1223;		myPhone.dial(extNumber);
+		byte mumbaiStdCode=22;		long number=82828222;
+		myPhone.dial(mumbaiStdCode, number);
+		byte delhiStdCode=11; myPhone.dial(number,delhiStdCode);
+	}
 
-
-
- class Branch extends OverloadingTest
- {
-	 Branch(int red)
-	 { 
-		 System.out.println(red);
-
-	 }
-	 Branch()
-	 { 
-		this(20);
-	 }
-	 public static void main(String[] args) {
-		
-	
-		 Branch obj= new Branch();
-	   }
- }
-
-	 
-	 
- 
-	
-
+}

@@ -1,0 +1,12 @@
+create or replace function calcNetSal(x number,y number, z number) return number
+    as
+      netsalary number;
+    begin
+       select sal+nvl(comm,0) into netsalary from emp where empno=z;
+       return netsalary;
+    end;
+    /
+
+
+	procedure may or maynot return value
+	that too without return keyword

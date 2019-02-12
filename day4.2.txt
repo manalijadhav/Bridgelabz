@@ -1,0 +1,212 @@
+ORA-02291: integrity constraint (SYSTEM.EMP_FOREIGN_KEY) violated - parent key
+not found
+
+ORA-02292: integrity constraint (SYSTEM.EMP_FOREIGN_KEY) violated - child
+record found
+
+-------------------
+
+USER DEFINED EXCEPTIONS
+1. declare expception variable
+2. associate this variable with a error number
+3. raise it
+4. catch it
+
+
+	declare
+		employee_found Exception;
+		pragma exception_init(employee_found,-2292);		
+	begin
+		delete .... dept		
+
+		exception
+			when employee_found then
+		
+				employee found, cannot delete dept
+	end;	
+
+ declare
+       emp_found Exception;
+       pragma exception_init(emp_found,-2292);
+       dno number := &temp;
+    begin
+        dbms_output.put_line('trying to delete department records..');
+        delete from dept where deptno=dno;
+        dbms_output.put_line('record deleted for deptno ... '|| dno);
+       exception when emp_found then
+              dbms_output.put_line('employee exists...cannot delete 
+					this dept..'||dno);
+  end;
+----------------------------
+ declare
+       dept_not_found Exception;
+       pragma exception_init(dept_not_found,-2291);
+       dno number := &temp1;
+       eno number := &temp2;
+    begin
+        dbms_output.put_line('trying to update department details of an employee');
+        update emp set deptno=dno where empno=eno;
+
+        dbms_output.put_line('record updated for empno... '|| eno);
+       exception when dept_not_found then
+              dbms_output.put_line('cannot update this emp..such deptno does not exist'||dno);
+  end;
+------------
+
+DECLARE
+   -- Declaring user defined exception
+   e_check_sal   EXCEPTION;
+   v_empno emp.empno%TYPE :=&empno;
+   emp_sal emp.sal%TYPE   :=&empsal;
+   mgr_sal emp.sal%TYPE;
+BEGIN
+   SELECT e1.sal INTO mgr_sal FROM emp e,emp e1 
+   WHERE e.mgr=e1.empno and e.empno=v_empno;
+   IF(emp_sal > mgr_sal) THEN
+   		RAISE e_check_sal;          -- Raising user-defined exception
+   ELSE
+   		UPDATE emp SET sal=emp_sal WHERE empno=v_empno;
+   END IF;
+   DBMS_OUTPUT.PUT_LINE('Salary updated');
+   COMMIT;
+EXCEPTION
+   --Handling user defined exception
+     WHEN  e_check_sal THEN
+           DBMS_OUTPUT.PUT_LINE('Employee salary can not be greater than Manager salary');
+	  WHEN OTHERS THEN
+		DBMS_OUTPUT.PUT_LINE(‘ Wrong  input/Some other Error’);
+END;
+
+
+
+
+		
+---------------
+select manager.empno,manager.ename,manager.sal, worker.empno, worker.ename, worker.sal, worker.mgr  from emp manager, emp worker
+where worker.mgr = manager.empno  and worker.empno=7900;
+
+declare
+	cursor empcur is ......
+begin
+	open
+	..
+	close
+end
+
+
+annonymous
+
+stored procedure
+stored function
+
+functions
+-----------
+
+int main() <-- calling function/route
+{
+	clearScreen(); <-- called function/route
+	calculateAverage(3,5,8);
+	float ans = calcAverage(43,22,35);
+	printf("answer is : %f",ans);
+	double distance = calcDistanceBetweenTheSunAndTheEarth
+	printf("distance is : %f",ans);
+
+}
+	1.function without argument/parameters AND without return value
+		
+		void clearScreen(void)
+		{
+
+		}
+
+	2. function with argument/parameters BUT without return value
+
+		void calculateAverage(int i,int j, int k)
+		{
+			float avg = (float) (i + j + k ) / 3; ---> 5
+			printf("average is : %f",avg);
+		}
+
+
+	3. function with argument/parameters AND with return value
+
+		float calcAverage(int i, int j, int k)
+		{
+			float avg = (float) (i + j + k ) / 3; ---> 5
+			return avg; <-- return value is here
+		}
+
+	4. function without argument/parameters BUT with return value
+
+		double calcDistanceBetweenTheSunAndTheEarth()
+		{
+			double dist = 186000.519 * 480 ;
+			return dist; <-- return value is here
+		}
+
+
+
+
+
+1)
+create or replace procedure clearScreen
+as
+begin
+        dbms_output.put_line('welcome to procedures..');
+        dbms_output.put_line('clearing the screen..');
+        dbms_output.put_line('bye from the procedure');
+end;
+
+2)
+create or replace procedure calcAvg(x number, y number, z number)
+as
+   avg number;
+begin
+        dbms_output.put_line('welcome to procedure...calcAvg.');
+        dbms_output.put_line('calculating average...');
+	avg:=(x+y+z) / 3;	
+        dbms_output.put_line('Average...'||avg);
+        dbms_output.put_line('bye from the procedure');
+end;
+
+3)
+create or replace procedure calcAverage(x number, y number, z number,  avg OUT number)
+as
+
+begin
+        dbms_output.put_line('welcome to procedure...calcAverage');
+        dbms_output.put_line('calculating average...');
+	avg:=(x+y+z) / 3;	
+        dbms_output.put_line('bye from the procedure');
+end;
+------------------------
+  1  declare
+  2     ans number;
+  3  begin
+  4         calcAverage(23,45,66,ans);
+  5         dbms_output.put_line('average is '||ans);
+  6* end;
+
+
+
+4) create or replace procedure findDistance(dist OUT number)
+as
+    SPEED_OF_LIGHT constant number := 186000.519;
+    TIME_TRAVELLED constant number:=480;
+ 
+begin
+        dbms_output.put_line('welcome to procedure...findDistance');
+        dbms_output.put_line('calculating distance...');
+	dist:= SPEED_OF_LIGHT * TIME_TRAVELLED ;
+        dbms_output.put_line('bye from the procedure');
+end;
+
+declare
+    distance number;
+  begin
+      findDistance(distance);
+        dbms_output.put_line('Distance : '||distance);
+  end;
+   /
+
+

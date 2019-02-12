@@ -1,0 +1,100 @@
+
+declare
+	x number;
+	y number;	
+	z number;
+begin
+	x:=&temp1;
+	y:=&temp2;
+	dbms_output.put_line('Begin main');
+	dbms_output.put_line('num is : '||x);
+	dbms_output.put_line('den is : '||y);
+
+	if y = 0 then
+		dbms_output.put_line('divisor is equal to zero');
+	else
+		dbms_output.put_line('dividing...');
+		z:=x/y;
+		dbms_output.put_line('division : '||z);
+	end if;
+	dbms_output.put_line('End main');
+end;
+
+			error
+			|
+	------------------------------------------------------
+	|	|		|	|	|	|
+	syntax	library    exception 	logical	fatal  linker
+	x=10;    ...       x:=10/0;     x:=2*9;
+				|
+			   runtime error
+
+
+declare
+	x number(3):=&temp1;
+	y number(3);	
+	z number(3);
+begin
+	
+	dbms_output.put_line('Begin main');
+	dbms_output.put_line('num is : '||x);
+	dbms_output.put_line('den is : '||y);
+	dbms_output.put_line('dividing...');
+	z:=x/y; 
+	dbms_output.put_line('division : '||z);
+
+	EXCEPTION 
+		when ZERO_DIVIDE then
+			dbms_output.put_line('divisor is equal to zero');
+		when VALUE_ERROR then
+			dbms_output.put_line('number precision too large..');
+	dbms_output.put_line('End main');
+end;
+-----
+declare
+	x number(3); y number(3); z number(3); myerrmsg varchar(256);
+begin
+	x:=&temp1;
+	y:=&temp2;
+	dbms_output.put_line('Begin main');
+	dbms_output.put_line('num is : '||x);
+	dbms_output.put_line('den is : '||y);
+	dbms_output.put_line('dividing...'); z:=x/y; 
+	dbms_output.put_line('division : '||z);
+	EXCEPTION 
+		when ZERO_DIVIDE then	dbms_output.put_line('divisor is equal to zero');
+		when OTheRs then myerrmsg := SQLCODE;
+		dbms_output.put_line('Some problem...' || myerrmsg );
+	dbms_output.put_line('End main');
+end;
+
+
+-----------------
+
+declare
+x number(3); y number(3); z number(3); myerrmsg varchar(256);
+begin
+x:=&temp1;
+y:=&temp2;
+dbms_output.put_line('Begin main');
+dbms_output.put_line('num is : '||x);
+dbms_output.put_line('den is : '||y);
+dbms_output.put_line('dividing...'); z:=x/y;
+dbms_output.put_line('division : '||z);
+EXCEPTION
+when ZERO_DIVIDE then
+	dbms_output.put_line('divisor is equal to zero');
+	myerrmsg := SQLERRM;
+	insert into  myerrlogs values ( myerrmsg, user, sysdate);
+	commit;
+when OTheRs then 
+	myerrmsg := SQLERRM;
+	insert into  myerrlogs values ( myerrmsg, user, sysdate);
+	commit;
+	dbms_output.put_line('Some problem...');
+dbms_output.put_line('End main');
+end;
+/
+create table myerrlogs (     errmsg varchar2(512),    who varchar2(10),
+    errtime date );
+select errmsg,who,to_char(errtime,'mm-dd-yy hh:mi:ss') from myerrlogs;

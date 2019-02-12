@@ -70,7 +70,62 @@ end;
    and ename='MARTIN';
 
 	ORDER ITEM PRODUCT 
-c
+
+declare
+       deptName dept.dname%type;
+       deptLocation dept.loc%type;
+       empName emp.ename%type;
+       empJob emp.job%type;
+       custName customer.name%type;
+       custAddress customer.address%type;
+       orderid ord.ordid%type;
+       orderdate ord.orderdate%type;
+       ordershipdate ord.shipdate%type;
+       ordertotal ord.total%type;
+       productid product.prodid%type;
+       productdescrip product.descrip%type;
+     
+       
+    begin
+        select 
+	dname,   loc,  ename,  job,   name,    address,     
+	ord.ordid,   product.prodid,  orderdate, shipdate,total,descrip
+	INTO   
+	deptName,deptLocation, empName,empJob,custName,custAddress, 
+	orderid,productid, orderdate, ordershipdate,
+	ordertotal,productdescrip
+
+	from dept,emp,customer,ord,item,product 
+
+	where dept.deptno = emp.deptno AND
+		   emp.empno = customer.repid AND
+		   customer.custid = ord.custid AND
+		   ord.ordid = item.ordid AND
+		   item.prodid = product.prodid 
+		   and ename='MARTIN' and 
+	ord.ordid=614 and product.prodid=100860;
+
+            dbms_output.put_line('-- Department Details  -- ');
+            dbms_output.put_line('Department Name   : ' || deptName);
+            dbms_output.put_line('Department Loc    : ' || deptLocation);
+            dbms_output.put_line('----------------------------');
+            dbms_output.put_line(' -- Employee Details -- ');
+            dbms_output.put_line('Employee Name     : ' || empName);
+            dbms_output.put_line('Employee Job      : ' || empJob);
+            dbms_output.put_line('----------------------------');
+            dbms_output.put_line('-- Customer Details  -- ');
+            dbms_output.put_line('Customer name     : ' || custName);
+            dbms_output.put_line('Customer address  : ' || custAddress);
+            dbms_output.put_line('-- Order Details  -- ');
+            dbms_output.put_line('Order Id          : ' || orderid);
+            dbms_output.put_line('Order Date        : ' || orderdate);
+            dbms_output.put_line('Order ShipDate    : ' || ordershipdate);
+            dbms_output.put_line('Order Total       : ' || ordertotal);
+            dbms_output.put_line('-- PRoduct Details  -- ');            
+	    dbms_output.put_line('Product Id        : ' || productid);
+	    dbms_output.put_line('Product Name      : ' || productdescrip);
+   end;
+ 
 
         select dname,   loc,          ename,  job,   name,    address,     ordid,   prodid,   orderdate, shipdate,     total,     descrip
 		|	|		|	|	|	|	    |		|	|	   |		|		|
@@ -378,7 +433,9 @@ declare
 	DBMS_OUTPUT.PUT_LINE('end of main ');
   end;
 /
-----------------------------------------------------------
+
+
+			
 
 
 

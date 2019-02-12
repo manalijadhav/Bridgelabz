@@ -1,0 +1,22 @@
+begin
+ dbms_output.put_line('Begin the outer main...');
+ declare
+         x number(3):=&temp1; y number(3):=&temp2; z number(3);
+ begin
+         dbms_output.put_line('Begin inner block');
+         dbms_output.put_line('num is : '||x);
+         dbms_output.put_line('den is : '||y);
+         dbms_output.put_line('dividing...'); z:=x/y;
+          dbms_output.put_line('division : '||z);
+          EXCEPTION
+                  when ZERO_DIVIDE then
+                          dbms_output.put_line('divisor is equal to zero');
+          dbms_output.put_line('End of the inner block');
+  end;
+  EXCEPTION
+          when VALUE_ERROR then
+                  dbms_output.put_line('OUTER BLOCK ERROR : number precision too large..');
+          when others then
+                  dbms_output.put_line('some problem...');
+  dbms_output.put_line('End of the outer block');
+end;
