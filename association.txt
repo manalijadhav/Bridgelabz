@@ -119,13 +119,10 @@ Flight Framework
 layer 3 is implementation of the framework
 
 
-				AIR 
-...........................................................
-|              |              |
-AIRPORT       AIRBASE        AIRCARGO
-These are extended from AIR class
+				
 
 	
+
 
 
 

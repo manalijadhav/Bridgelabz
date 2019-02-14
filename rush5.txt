@@ -54,9 +54,8 @@ a. Parent Child	   b. Child Parent	c. Error	d. none of the above
 		loop
 			dbms_output.put_line('deptno ' || deptrec.deptno);
 		end loop;
-		close deptcur;
 		for deptrec in deptcur
-           
+          close deptur;
 		loop
 			dbms_output.put_line('deptno ' || deptrec.deptno);
 		end loop;
@@ -64,6 +63,7 @@ a. Parent Child	   b. Child Parent	c. Error	d. none of the above
 	a. cursor already open	b. invalid cursor
 	c. both the for loop runs successfully
 	d. first for loop runs, second for loop with error
+
 
 
 

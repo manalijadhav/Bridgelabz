@@ -1,0 +1,98 @@
+
+public class Assignment {
+		public static void main(String[] args) {
+			
+			//Flight flight = new Flight(101,"Jet Airways","Mumbai","London");
+			//System.out.println("flight is : "+flight);
+			
+			CommercialFlight commFlight = new CommercialFlight(101,"Jet Airways","Mumbai","London");
+			System.out.println("Comm Flight is : "+commFlight);
+			
+		    FighterPlane fiplane = new FighterPlane(102,"Jet Airways","Mumbai","London");
+			System.out.println("Comm Flight is : "+fiplane);
+			
+		}
+	}
+abstract class Flight //meant for inheritance
+	{
+		private int flightNumber;
+		private String flightName;
+		private String sourceCity;
+		private String destCity;
+		
+		public Flight(int flightNumber, String flightName, String sourceCity, String destCity) {
+			super();
+			this.flightNumber = flightNumber;
+			this.flightName = flightName;
+			this.sourceCity = sourceCity;
+			this.destCity = destCity;
+		}
+		@Override
+		public String toString() {
+			return "Flight [flightNumber=" + flightNumber + ", flightName=" + flightName + ", sourceCity=" + sourceCity
+					+ ", destCity=" + destCity + "]";
+		}
+		 void fly()
+		 {
+			 System.out.println("Flight is Flying........ ");
+		 }
+		 void land()
+		 {
+			 System.out.println("Flight is landing.......... ");
+		 }
+		 
+	}
+
+	class CommercialFlight extends Flight // isA
+	{
+		CommercialFlight(int a,String airline, String sc,String dc ) {
+			super(a,airline,sc,dc);
+		}
+	}
+	
+	//fighterPlane implements CommercialFlight
+
+		class FighterPlane extends Flight  implements Aviation,Airbase// isA
+	{
+		 FighterPlane(int a,String airline, String sc,String dc ) {
+			super(a,airline,sc,dc);
+		
+		}
+			@Override
+			public void alt() {
+				// TODO Auto-generated method stub
+				System.out.println("altitude");
+			}
+			@Override
+			public void lat() {
+				// TODO Auto-generated method stub
+				System.out.println("latitude");
+			}
+			@Override
+			public void checkmissiles() {
+				// TODO Auto-generated method stub
+				System.out.println("Checking Missiles");
+			}
+			@Override
+			public void firemissiles() {
+				// TODO Auto-generated method stub
+				System.out.println("Firing MIssiles");
+			}
+
+	}
+
+interface Aviation
+{
+void lat();
+void alt();
+}
+
+interface Airbase
+{
+void checkmissiles();
+void firemissiles();
+}
+
+
+	
+

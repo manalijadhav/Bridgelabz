@@ -1,0 +1,85 @@
+public class InterfaceTest2 {
+	public static void main(String[] args) {
+
+		FighterFlight fiflight = new FighterFlight(101,"Jet Airways","Mumbai","London");
+		System.out.println("Fighter Flight is : "+fiflight);
+		fiflight.checkAltitude();
+		fiflight.checkLatitude();
+		fiflight.checkMissiles();
+		fiflight.fireMissiles();
+	}
+}
+
+abstract class Flight //meant for inheritance 
+{
+	private int flightNumber;
+	private String flightName;
+	private String sourceCity;
+	private String destCity;
+	
+	    Flight(int flightNumber, String flightName, String sourceCity, String destCity) {
+		super();
+		this.flightNumber = flightNumber;
+		this.flightName = flightName;
+		this.sourceCity = sourceCity;
+		this.destCity = destCity;
+	}
+	
+	@Override
+	public String toString() {
+		return "Flight [flightNumber=" + flightNumber + ", flightName=" + flightName + ", sourceCity=" + sourceCity
+				+ ", destCity=" + destCity + "]";
+	}
+}
+
+
+interface Airbase
+{
+	void checkMissiles();
+	void fireMissiles(); 
+	}
+
+interface Aircargo
+{
+	void checkCapacity();
+}
+
+interface Aviation
+{
+	void checkLatitude(); //GPS
+	void checkAltitude(); // vertical position
+}
+
+class FighterFlight extends Flight implements Aviation,Airbase{
+
+	FighterFlight(int flightNumber, String flightName, String sourceCity, String destCity) {
+		super(flightNumber, flightName, sourceCity, destCity);
+		
+	}
+	
+	public void checkMissiles() {
+		System.out.println("checking missiles....");
+	}
+	public void fireMissiles() {
+	System.out.println("firing missiles............");	
+	}
+	public void checkLatitude() {
+		System.out.println("checking latitude.........");
+	}
+	public void checkAltitude() {
+		System.out.println("checking altitude.........");
+	}
+
+	
+}
+ class CargoFlight extends Flight implements Aircargo {
+
+	public CargoFlight(int flightNumber, String flightName, String sourceCity, String destCity) {
+		super(flightNumber, flightName, sourceCity, destCity);
+		
+	}
+	 public void checkCapacity() {
+		 System.out.println("Checking Capacity.............................");
+	 }
+ }
+

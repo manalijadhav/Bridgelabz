@@ -22,6 +22,7 @@ public class HasATest {
 					//invoked by startCar()
 		System.out.println("------------------------------");
 		Petrol pet = new Petrol();
+		
 		Car anotherCar = new Car();
 		Smoke sm = anotherCar.startCar(pet);
 		sm.showSmoke();
@@ -92,7 +93,7 @@ class Fuel
 	
 }
 class Petrol extends Fuel // isA 
-{
+{l
 	
 }
 

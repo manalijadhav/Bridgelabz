@@ -1,0 +1,90 @@
+
+public class InheritenceTest {
+public static void main(String args[])
+{
+SavingAccount saveacc= new SavingAccount(101,"Disha",50000.0, (float)6.5);
+saveacc.showBankBalance();
+}
+}
+
+class BankAccount
+{
+     private int accountNumber; 
+     private String accountHolder;
+     private double accountBalance;
+     
+     BankAccount(int acno, String achn, double accBal)
+ 	{
+ 	    boolean validName=false;
+ 	    char alpha=' ';
+ 		System.out.println("Setting BankAccount...");
+ 		accountNumber = acno;
+ 		for(int i=0; i<achn.length();i++)
+ 		{
+ 			alpha=achn.charAt(i);
+ 			if((alpha>=65 && alpha<=90) ||(alpha>=97 && alpha<=122) || (alpha==32))
+ 			{
+ 				validName=true;
+ 			}
+ 			else
+ 			{
+ 				validName=false;
+ 				break;
+ 			}
+ 		}
+ 		if(validName==true)
+ 		{
+ 			accountHolder=achn;
+ 		}
+ 		else {
+ 			System.out.println("Invalid Name");
+ 		}
+ 		accountBalance = accBal;		
+ 	}
+void withdraw(double amountToWithdraw)
+{
+        if(amountToWithdraw < accountBalance)
+        {
+		accountBalance= accountBalance - amountToWithdraw;
+		System.out.println("Withdrawing......"+ amountToWithdraw);
+        }
+	else
+		System.out.println("Cannot withdraw..Insufficient Balance");
+}
+
+void deposit(double amountToDeposit)
+{	
+ if(amountToDeposit > 0)
+       {
+		accountBalance= accountBalance +amountToDeposit;
+		System.out.println("Depositing......"+amountToDeposit);
+       }
+else
+       {
+ 		System.out.println("cannot deposit negative value");
+		System.out.println("------------------------------");
+       }
+}
+
+void showBankBalance()
+	{
+		System.out.println("Account number  :"+accountNumber);
+		System.out.println("Account Holder  :" +accountHolder);
+		System.out.println("Account Balance :"+ accountBalance);
+		System.out.println("-----------------------------------");
+	}
+}
+
+class SavingAccount extends BankAccount{
+	private float interestRate;
+	SavingAccount(int a, String b, double c, float d)
+			{
+		super(a,b,c);
+		interestRate=d;
+			}
+	
+	void showBankBalance()
+	{
+		System.out.println("Account Interest Rate :"+interestRate);
+	}
+}

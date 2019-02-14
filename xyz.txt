@@ -2,17 +2,21 @@ public class ProducesATest {
 	public static void main(String[] args) {
 		Kid kd = new Kid();
 		Alphabet alpha = kd.writingAlphabet();
+		System.out.println("Kid is writing ");
         alpha.showAlphabet();
         System.out.println("-------------------");
         
-        Todler tod = new Todler();
+        Toddler tod = new Toddler();
         Word wd = tod.writingWord();
+        System.out.println("Toddler is writing");
         wd.showWord();
+        System.out.println("--------------------");
 		
 	}
 }
+class infant {}
 
-class Kid
+class Kid extends infant //isA
 {
 	Alphabet writingAlphabet()
 	{
@@ -20,7 +24,7 @@ class Kid
 		return a;
 	}
 }
-class Todler extends Kid
+class Toddler extends Kid
 {
 	Word writingWord()
 	{
