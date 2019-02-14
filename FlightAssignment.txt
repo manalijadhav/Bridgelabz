@@ -1,0 +1,208 @@
+
+public class FlightTest {
+
+	public static void main(String[] args) {
+	//Flight flight = new Flight(101,"Jet Airways","Mumbai","London");
+	//System.out.println("flight is : "+flight);
+			
+		CommercialFlight commFlight = new CommercialFlight(101,"Jet Airways","Mumbai","London",300,5000);
+		commFlight.showCommercialFlight();
+		commFlight.checkTickets();
+		commFlight.issueBoardingPass();
+		commFlight.fly();
+		commFlight.land();
+		System.out.println();
+		
+		FighterFlight fightFlight = new FighterFlight(1781,"AD Scout","London","New York",500);
+		fightFlight.showFighterFlight();
+		fightFlight.checkMissiles();
+		fightFlight.fly();
+		fightFlight.fireMissiles(); 
+		fightFlight.land();
+		System.out.println();
+		
+		CargoFlight crgFlight = new CargoFlight(5,"FedEx","Chicago","Dubai",50000);
+		crgFlight.showCargoFlight();
+		crgFlight.checkCapacity();
+		crgFlight.fly();
+		crgFlight.land();
+		System.out.println();
+		
+	}
+}
+
+abstract  class Flight //meant for inheritance
+{
+	private int flightNumber;
+	private String flightName;
+	private String sourceCity;
+	private String destCity;
+	
+	abstract void fly() ;
+	abstract void land();
+	
+	public Flight(int flightNumber, String flightName, String sourceCity, String destCity) {
+		super();
+		System.out.println("Flight(int,String,String,String");
+		System.out.println();
+		System.out.println();
+		this.flightNumber = flightNumber;
+		this.flightName = flightName;
+		this.sourceCity = sourceCity;
+		this.destCity = destCity;
+	}
+	@Override
+	public String toString() {
+		return "Flight [flightNumber=" + flightNumber + ", flightName=" + flightName + ", sourceCity=" + sourceCity
+				+ ", destCity=" + destCity + "]";
+	}
+	void showFlight() {
+		System.out.println("Flight no	: "+flightNumber);
+		System.out.println("FlightName	: "+flightName);
+		System.out.println("Source		: "+sourceCity);
+		System.out.println("Dest		: "+destCity);
+	}
+}
+
+interface Airport
+{
+	void checkTickets(); // by default its public and abstract
+	void issueBoardingPass(); // by default its public and abstract
+	//int max=100; // by default public static and final
+}
+
+interface Aviations
+{
+	void checkLatitude(); //GPS
+	void checkAltitude(); // vertical position
+}
+
+interface Airbase
+{
+	void checkMissiles();
+	void fireMissiles(); 
+}
+
+interface AirCargo
+{
+	void checkCapacity(); 
+}
+
+class CommercialFlight extends Flight implements Airport, Aviations// isA
+{
+	int totalSeats;
+	double farePerSeat;
+	double totalCostOfFlight;
+	
+	CommercialFlight(int a,String airline, String sc,String dc, int ts, int fare) {
+		super(a,airline,sc,dc);
+		totalSeats = ts;
+		farePerSeat = fare;
+		totalCostOfFlight = totalSeats * farePerSeat ;  
+		System.out.println("CommercialFlight(int,String,String,String,int,double)");
+	}
+	void showCommercialFlight() {
+		super.showFlight();
+		System.out.println("Commercial Flight Total Seats	: "+totalSeats);
+		System.out.println("Commercial Flight Fare/Seat	: "+farePerSeat);
+		System.out.println("Commercial Flight Total Cost	: "+totalCostOfFlight);
+	}
+	public void checkTickets()
+	{
+		System.out.println("Commercial Flight Checking...Tickets....");
+	}
+	public void issueBoardingPass() {
+		System.out.println("Commercial flight Issuing boarding passes....");
+	}
+
+	public void checkLatitude() 
+	{
+		System.out.println("Commercial Flight is checking its.... latitude...");
+	}
+	public void checkAltitude() 
+	{
+		System.out.println("Commercial Flight is checking its.... altitude...");
+	}
+	@Override
+	void fly() {
+		System.out.println("Commercial Flight is flying.....");
+		 checkAltitude();
+		 checkLatitude();
+	}
+	@Override
+	void land() {
+		System.out.println("Commercial Flight is landing........");
+	}
+}
+	
+class FighterFlight  extends Flight implements Airbase, Aviations
+{
+	int countMissiles;
+		
+		FighterFlight(int a,String name, String sc,String dc,int cntMsls) {
+			super(a,name,sc,dc);
+			countMissiles=cntMsls;
+			System.out.println("Fighter Flight(int,String,String,String,int)");
+		}
+		void showFighterFlight() {
+			super.showFlight();
+			System.out.println("Total Missiles loaded in Fighter Flight	: "+countMissiles);
+		}
+		public void checkLatitude() {
+			System.out.println("Fighter Flight is checking its.... latitude...");
+		}
+		public void checkAltitude() {
+			System.out.println("Fighter Flight is checking its.... altitude...");
+		}
+		void fly() {
+			System.out.println("Fighter Flight is flying.....");
+			 checkAltitude();
+			 checkLatitude();
+		}
+		void land() {
+			System.out.println("Fighter Flight is landing........");
+		}
+		
+		public void checkMissiles()
+		{
+			System.out.println("Fighter Flight is checking its.... Missiles...");
+		}
+		public void fireMissiles()
+		{
+			System.out.println("Fighter Flight is firing the missiles....");
+		}
+}
+	
+class CargoFlight extends Flight implements AirCargo
+{
+	int capacityCargo;
+	
+	CargoFlight(int a,String name, String sc,String dc,int cntcrg) {
+		super(a,name,sc,dc);
+		capacityCargo=cntcrg;
+		System.out.println(" Cargo  Flight(int,String,String,String,int)");
+	}
+	void showCargoFlight() {
+		super.showFlight();
+		System.out.println(" Cargo Total Storage capacity : "+capacityCargo);
+	}
+	public void checkLatitude() {
+		System.out.println(" Cargo Flight is checking its.... latitude...");
+	}
+	public void checkAltitude() {
+		System.out.println(" Cargo Flight is checking its.... altitude...");
+	}
+	void fly() {
+		System.out.println(" Cargo Flight is flying.....");
+		 checkAltitude();
+		 checkLatitude();
+	}
+	void land() {
+		System.out.println(" Cargo Flight is landing........");
+	}
+	
+	public void checkCapacity()
+	{
+		System.out.println(" Cargo Flight is checking its  Store capacity....");
+	}
+}

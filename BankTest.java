@@ -1,75 +1,146 @@
-
-class Bank
-{
-	private int accNumber;
-	private String	Name;
-	private double Bal;
-
-	void setAccount(int an,String nm,double bl)
-	{
-	System.out.println("Setting account.....");
-	accNumber=an;
-	Name=nm;
-	Bal=bl;
-	}
-
-	void withdraw(int wdrawAm)
-	  if(amountToWithdraw < accountBalance) {	{
-	System.out.println("withdrawing amount :"+wdrawAm);
-	accountBalance accountBalance -amounToWithdraw;
-	
-	}
-   else{
-	System.out.println("insufficient funds");
-}
-
-	void Deposit(int depo)
-	{
-	System.out.println("Depositing amount :"+depo);
-	Bal=Bal+depo;
-	}
-
-	void showAcc()
-	{
-	System.out.println("Account Number:		"+accNumber);
-	System.out.println("Account Holder Name:	"+Name);
-	System.out.println("Account Balance		"+Bal);
-	System.out.println("------------------------------------------------");
-	}
 class BankTest
-	{
+{  	//		who
+	//where		when
+	//why   what    wow
+	
 	public static void main(String args[])
 	{
-	Bank bankObj1 = new Bank();
-	Bank bankObj2 = new Bank();
-	Bank bankObj3 = new Bank();
+		System.out.println("starting the bank....");
 
-	bankObj1.showAcc();
-	bankObj2.showAcc();
-	bankObj3.showAcc();
+		//creating object = instantiation process
+		BankAccount bankObj1 = new BankAccount(-100,"Sachin",50000);
+		bankObj1.showBankAccount();
+		
+		bankObj1.withdraw(7000);
+		bankObj1.showBankAccount();
+		
+		//bankObj1.BankAccount(122,"Julie",6000);
+	//	bankObj1.showBankAccount();
+		
+		
+	}
+}
+// business entity  
 
-	bankObj1.setAccount(1,"abc",56000);
-	bankObj2.setAccount(2,"apurva",76000);
-	bankObj3.setAccount(3,"shivali",56890);
+//vision
 
-	bankObj1.showAcc();
-	bankObj2.showAcc();
-	bankObj3.showAcc();
+class A
+{
+	int x,y,z;
+	//here JPL provides a ctor known as implicit or default ctor
+	//it does nothing
+}
+// A a = new A();
 
-	bankObj1.withdraw(7000);
-	bankObj2.withdraw(6000);
-	bankObj3.withdraw(5000);
+class B
+{
+	int light;
+	
+	B(int x) // this is explicit no-arg ctor -NEVER KNOWN AS DEFAULT 
+	{
+		int planet;
+	    System.out.println("light is "+light);	
+	    //System.out.println("planet is "+planet);
+	}
+	void fun() {
+		light =29292;
+	}
+}
 
-	bankObj1.showAcc();
-	bankObj2.showAcc();
-	bankObj3.showAcc();
+class NegativeAccountNumberException extends Exception
+{
+	
+}
 
-	bankObj1.Deposit(2000);
-	bankObj2.Deposit(6000);
-	bankObj3.Deposit(1000);
+class BankAccount // <-- blueprint of the object 
+{
+	//data members / fields
+	private int accountNumber; 
+	private String accountHolder; 
+	private double accountBalance;
 
-	bankObj1.showAcc();
-	bankObj2.showAcc();
-	bankObj3.showAcc();
+	BankAccount() { }
+	
+							//local variables
+	BankAccount( String achn) {
+		this(0,achn,0); // call the constructor of the same class
+		System.out.println("==>Creating and setting the BankAccount(String)....");
+		//accountHolder = achn;
+		
+		
+	}
+	
+	BankAccount(int accountNumber, String achn, double accBal) {
+		System.out.println("==>Creating and setting the BankAccount(int,String,double)....");
+		if(accountNumber < 0 ) {
+			System.out.println("account number cannot be negative..");
+		}
+		else {
+			this.accountNumber = accountNumber;	
+		}
+		//all local variables must be initialized
+		
+		boolean validName= false; // 
+		char alpha =' ';
+		for (int i=0;i<achn.length();i++)
+		{  //Sac%4in
+			alpha = achn.charAt(i);
+			if( (alpha >=65 && alpha <=90) || ( alpha >=97 && alpha <=122) || (alpha==32) ) // notepad -> alt+68
+			{
+				validName = true;
+			}
+			else {
+				validName = false;
+				break;
+			}
+		}
+		
+			if(validName == true) {
+				accountHolder = achn;		
+			}
+			else {
+				System.out.println("Invalid account holder name ");
+			}
+		
+		if(accBal < 0) {
+			System.out.println("Account opening balance cannot be negative...");
+		}
+		else {
+			accountBalance = accBal;
+		}
+	}
+	
+	/*void setBankAccount(int acno, String achn, double accBal) {
+		System.out.println("==> Setting the BankAccount....");
+		accountNumber = acno;	accountHolder = achn;
+		accountBalance = accBal;
+	}*/
+	//member functions / methods
+
+		void withdraw(double amountToWithdraw)	{
+		if(amountToWithdraw < accountBalance) 	{
+			System.out.println("--> Withdrawing......"+amountToWithdraw);
+			accountBalance = accountBalance - amountToWithdraw;
+		}
+		else {
+			System.out.println("Insufficient funds..cannot withdraw....");
+		}
+	}
+	void deposit(double amountToDeposit) {
+		if(amountToDeposit < 0 ) {
+			System.out.println("Cannot deposit negative amount...");
+		}
+		else {
+			System.out.println("<-- Depositing......"+amountToDeposit);
+			accountBalance = accountBalance + amountToDeposit;
+		}
+	}
+	
+
+	void showBankAccount() {
+		System.out.println("Account Number  : "+accountNumber);
+		System.out.println("Account Holder  : "+accountHolder);
+		System.out.println("Account Balance : "+accountBalance);
+		System.out.println("----------------------------");
 	}
 }
