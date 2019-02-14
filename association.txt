@@ -1,142 +1,82 @@
+package association;
 
-		class ElectricalDevice
-		{
+public class Association {
 
-		}
-
-		Bulb extends ElectricalDevice //isA
-		{
-			Filament f  = new Filament(); //hasA
-	
-		producesA
-			Light glow(Electricity ele) //usesA
-			{
-
-			}
-		
-		}
-
-
-				Association
-			
-			Person <-- generalization
-			| gender, age, name
-			| PanCard pCard = new PanCard() <-- hasA
-	-----------------------------------
-		|isA
-		|
-		Student <-- specialization
-		|
-		| rollno, collegeName, Stream
-		| ReportCard rpt1, rpt2, rpt3 ..... hasA  COMPOSITION
-		|	studying()
-		|	studying(Phone p) <-- usesA
-		|	Project create(); <-- producesA
-		|isA
-		Employee
-		| empno, companyName, desg, 
-		| SalarySlip slip1, slip2..... hasA
-		|
-
-
-
-
-
-	person
-
-	student
-
-	pancard
-
-	reportcard
-
-
-	phone
-
-	smartphone
-
-	project
-
-
---------------------------------------------------------------------------------
-	|	field		|	method		|	class
---------------------------------------------------------------------------------
-final	| cannot change,CONSTANT|	cannot override	|cannot be extended
---------------------------------------------------------------------------------
-static	| shared data across	|is used to refer the 	|	-		
-	| all the instances of  |other static members	|
-	| the class		|of the class		|
---------------------------------------------------------------------------------
-abstract|	NA		|"partial contract"of a	|a class with "optional"			
-	|			|class			|partial contract
---------------------------------------------------------------------------------
-interfaces
-
-			BA
-			|
-		-------------------
-		|	|	|
-		SA	CA	CRA
-		|
-	final	FDA
-		|
-		????
-
-
-
-1			GeometricalShape
-				| draw(); calcPeriPhery(); calcArea();
-		------------------------------------
-		|		|		|
-2		Circle		Square		Triangle
-		|rad1		|side1		
-		|		|
-3		Ellipse		Rectangle
-		rad2		side2
-
-
-
-
-interfaces
--------------------
-		the class with pure "partial contract"
-
-		all the methods are abstract
-		it cannot have non-abstract methods
-
-Flight Framework 
-1				Flight(ac)
-				|fly();land();
-		----------------------------------------------------
-		|   				|		|
-2		|  Airport(i)	Aviation(i)	|		|
-	extends	|   |chcktkt	|lat,alt	|		|
-		|   |issuboard	|   |		|Airbase(i)	|  AirCargo(i)
-		|   ------------    +-----+     | |checkMissiles|   |checkCapacity	 
-		|     | implements	  |	| |fireMissiles	|   |
-3	CommercialFlight		FighterFlight		CargoFlight 
-
-layer 3 is implementation of the framework
-
-
-				
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public static void main(String[] args) {
+ 
+        Toddler toddler = new Toddler();
+        
+        toddler.startWriting();
+        
+    }
+    
+    class Kid{
+     
+        void Write(){
+        
+            System.out.println("Kid is Writing");
+                    
+        }
+    }
+    //kid--->Toddler--->hasA knowledge
+    
+    class Knowledge{
+        
+        private void startLearning(){
+            
+            System.out.println("Kid is Learning to write");
+                    
+                    
+        }
+        
+        void startWriting(){
+            
+            System.out.println("Starting...........");
+            startLearning();
+                    
+        }
+    }
+    
+    class Toddler extends Kid{  //Toddler is a kid
+        
+        String name; //has a name
+        int age;   //has age
+        Knowledge know = new Knowledge();
+        void startWriting(){
+            
+            name = "Jane";
+            System.out.println(name+ "is Trying to learn");
+            know.startWriting();
+            System.out.println("Started...");
+            Write();
+        }
+                                    //usesA
+        //Toddler uses Slate to write
+        Word startWriting(Slate s){
+            
+            System.out.println("Trying to write");
+            know.startWriting();
+            Write();
+            
+            Word w = new Word();
+                    
+                    return w;
+        }
+        class Word {
+            
+            void GenerateWord(){
+                System.out.println("Produces Word");
+                        
+            }
+        }
+        
+        class Slate{
+            
+            void useSlate(){
+                 System.out.println("Toddler usesA slate to write");
+            }
+            
+        }
+    }
+    
+}

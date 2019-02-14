@@ -1,0 +1,244 @@
+package pkginterface;
+
+public class Interface {
+
+    public static void main(String[] args) {
+            //abstract class cannot be instantiated
+            //   Flight flight = new Flight(100, "sgh", "hss" ,"shj", 988);
+            
+            //FLIGHT CAN POINT TO ITS CHILD CLASS
+            // Flight flight = new CommercialFlight(100, "sgh", "hss" ,"shj", 988,54);
+     
+        CommercialFlight commFlight = new CommercialFlight(101, "JETWAYS","MUMBAI","DelHI" ,800, 5000);
+        
+        commFlight.showCommercialFlight();
+        commFlight.checkTickets();
+        commFlight.issueboardingpass();
+        commFlight.fly();
+        commFlight.checkLatitude();
+        commFlight.checkAltitude();
+         System.out.println("******************");
+         
+         FighterFlight firflight = new FighterFlight(102, "HIGHWAY","DELHI","MUMBAI" ,1000);
+        
+        firflight.showFighterFlight();
+        firflight.checkMissiles();
+        firflight.fireMissiles();
+        firflight.fly();
+        firflight.checkLatitude();
+        firflight.checkAltitude();
+        firflight.land();
+         System.out.println("******************");
+         
+       cargoFlight carflight = new cargoFlight(102, "HIGHWAY","KAHIBHI","KABHI BHI" ,3000);
+        
+       carflight.showCargoFlight();
+       carflight.checkCapacity();
+       carflight.fly();
+       carflight.land();
+    }
+    
+}
+abstract class Flight{
+    
+    int flightNumber;
+    String flightName;
+    String sourceLoc;
+    String destLoc;
+    
+    Flight(int flightNumber, String flightName, String sourceLoc, String destLoc){
+        this.flightNumber = flightNumber;
+        this.flightName = flightName;
+        this.sourceLoc = sourceLoc;
+        this.destLoc = destLoc;
+       
+    }
+     abstract void fly();
+     abstract void land();
+     
+     void showFlight(){
+         
+         System.out.println("Flight Number is: "+flightNumber);
+         System.out.println("Flight Name is: "+flightName);
+         System.out.println("source location is: "+sourceLoc);
+         System.out.println("destination location is: "+destLoc);
+     }
+         
+}
+
+interface Airport{
+    
+    void checkTickets();
+    void issueboardingpass();
+}
+
+interface Aviation{
+    
+    void checkLatitude();
+    void checkAltitude();
+}
+
+class CommercialFlight extends Flight implements Airport, Aviation{
+    
+    int totalSeats;
+    int farePerSeat;
+    int totalFare;
+    CommercialFlight(int fNo, String fName , String sLoc, String dLoc, int totalSeats, int farePerSeat){
+        
+        super(fNo, fName, dLoc, dLoc);
+        
+        this.totalSeats = totalSeats;
+        this.farePerSeat = farePerSeat;
+        totalFare = totalSeats * farePerSeat;
+    }
+    
+    
+           
+    void showCommercialFlight() {
+        super.showFlight();
+         System.out.println("Total number of seats : "+totalSeats);
+          System.out.println("Fare per seat : "+farePerSeat);
+           System.out.println("Total Fare : "+ totalFare);
+    }
+
+    @Override
+    public void checkTickets() {
+       
+        System.out.println("Tickets are being checked.....");
+    }
+        @Override
+    public void issueboardingpass() {
+     
+         System.out.println("Issueboarding passes.....");
+    }
+
+    @Override
+    public void checkLatitude() {
+        
+         System.out.println("Checking latitude.....");
+    }
+
+    @Override
+    public void checkAltitude() {
+       
+         System.out.println("Checking Altitude.......");
+    }
+
+    @Override
+    void fly() {
+       
+         System.out.println("Flight is flying....");
+        
+    }
+
+    @Override
+    void land() {
+       
+         System.out.println("Flight is landing....");
+    }
+}
+
+interface Airbase{
+    
+    void checkMissiles();
+    void fireMissiles();
+}
+
+class FighterFlight extends Flight implements Airbase , Aviation{
+    
+    int countMissiles;
+    
+    FighterFlight(int fno , String fName, String sLoc, String dLoc, int countMissiles){
+        
+        super(fno, fName, sLoc, dLoc);
+        
+        this.countMissiles = countMissiles;
+    }
+    
+    void showFighterFlight(){
+        
+        super.showFlight();
+        
+        System.out.println("number of missiles : "+countMissiles);
+         
+    }
+    
+    @Override
+    void fly() {
+        
+        System.out.println("FighterFlight is flying....");
+    }
+
+    @Override
+    void land() {
+       
+        System.out.println("Fighterlight is landing....");
+    }
+
+    @Override
+    public void fireMissiles() {
+       
+        System.out.println("Fireflight is firing misiiles");
+    }
+
+    @Override
+    public void checkLatitude() {
+        
+        System.out.println("ff is checking latitude");
+    }
+
+    @Override
+    public void checkAltitude() {
+        
+        System.out.println("ff is checking altitude");
+    }
+
+    @Override
+    public void checkMissiles() {
+
+        System.out.println("ff is checking misilles");
+
+    }
+    
+}
+
+interface Aircargo{
+    
+    void checkCapacity();
+}
+class cargoFlight extends Flight implements Aircargo{
+    
+    int capacityCargo;
+    
+    cargoFlight(int fno, String fname, String sLoc , String dLoc, int capacityCargo){
+        
+        super(fno , fname, sLoc, dLoc);
+        this.capacityCargo = capacityCargo;
+        
+    }
+    void showCargoFlight(){
+        super.showFlight();
+        System.out.println("capacity is : "+capacityCargo);
+    }
+
+    @Override
+    void fly() {
+        System.out.println("CF iis flying");
+        
+    }
+
+    @Override
+    void land() {
+     System.out.println("Cf is landing..");
+      
+    }
+
+    @Override
+    public void checkCapacity() {
+       System.out.println("CF is checking capacityy");
+      
+    }
+    
+    
+    
+}
