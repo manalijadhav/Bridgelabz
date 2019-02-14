@@ -1,0 +1,79 @@
+
+
+Thread
+|
+set of instructions
+
+101	suresh	50000
+102	haresh	60000
+103	naresh	70000
+104	paresh	80000
+105	ramesh	90000
+.....
+
+FK
+acno	credit	debit	desc		balance	time	clerk
+101	5000		cashdep		55000	10:30	teller1
+101	7000		cashdep		62000	10:40	teller2
+101	8000		cashdep		70000	10:50	teller3
+101		5000	cashwith	65000	11:00	ATM
+
+
+				Deposit counter
+		Teller1			Teller2			Teller3
+		|			|			|
+		getBalance()		getBalance()		getBalance()
+		|			|			|
+		calcAmt();		calcAmt();		calcAmt();
+		|			|			|
+		setBalance();		setBalance();		setBalance();
+		|			|			|
+		Customer1		Customer2		Customer3
+		|			|			|
+a/c		101			101			101
+cash		5000/-			7000/-			8000/-
+deno		100 (50)		500 (14)		2000 (4)
+time		10:30am			10:30am			10:30am
+
+
+
+
+
+
+	
+
+		the ocean is vast
+		my boat is frail
+		thou "art" is with me
+		and everything is well
+
+
+
+
+		Object			Runnable
+		|11			| run(); // public abstract 
+	extends	|   +-------------------+ 
+		|   | implements
+		Thread
+		   |run() { }	<-------------------------------+
+		   |						|
+		   |start() { } -------> talks to the JVM Thread Scheduler
+		   |
+		   |extends		
+		   |
+	       MyThread	
+		run() { code for threading... }
+
+1. extend from java.lang.Thread class
+2. override its run() method
+   write teh logic inside this method, which will participate in threading env
+3. create teh object of the extended class
+	MyThread mt = new MyThread();
+	mt.start();
+
+
+
+		
+
+
+
